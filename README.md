@@ -1,16 +1,31 @@
-# 🏉 2027 Rugby World Cup — Multifactor Synergy Model (v3.0)
+# 🏉 2027 Rugby World Cup — Multifactor Synergy Model & Salary Arbitrage (v3.0)
 
 [![Data Source: World Rugby API](https://img.shields.io/badge/Data_Source-World_Rugby_API-green.svg)](https://www.world.rugby/rankings)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Status: Live Dashboard](https://img.shields.io/badge/Dashboard-Firebase_Hosting-blue.svg)](https://maths-f3c6d.web.app/rugby.html)
 
-A 6-factor sports analytics model quantifying **team synergy, squad depth, forward pack cohesion, and tactical alignment** across all 21 qualified nations for the 2027 Rugby World Cup in Australia.
+A 6-factor sports analytics model quantifying **team synergy, squad depth, forward pack cohesion, and player economic migration** across all 21 qualified nations for the 2027 Rugby World Cup in Australia.
 
-Live Interactive Dashboard: **[https://maths-f3c6d.web.app/rugby.html](https://maths-f3c6d.web.app/rugby.html)**
+- Live Interactive Dashboard: **[https://maths-f3c6d.web.app/rugby.html](https://maths-f3c6d.web.app/rugby.html)**
+- Live Salary & Migration Simulator: **[https://maths-f3c6d.web.app/salary.html](https://maths-f3c6d.web.app/salary.html)**
 
 ---
 
-## 📐 Mathematical Model & Formula
+## 📊 Raw Open-Source CSV Datasets
+
+All raw data powering the models and web applications is published transparently in the [`data/`](data/) directory:
+
+| Dataset | CSV File Path | Description |
+|---|---|---|
+| 🏆 **Full Calculated Synergy Standings** | [`data/full_synergy_standings.csv`](data/full_synergy_standings.csv) | Final 6-factor synergy ratings, World Rugby rankings, points, and chemistry profiles for all 21 nations. |
+| 👨‍💼 **Squad & Coaching Metadata** | [`data/squad_coaching_data.csv`](data/squad_coaching_data.csv) | Head coach names, tenure years, starter caps, combination status, tactical style categories, and depth scores. |
+| 🏋️ **Front Pack Club Registrations** | [`data/fp_data_raw.csv`](data/fp_data_raw.csv) | Raw front row (loosehead, hooker, tighthead) and lock (second row) club registrations per nation. |
+| 💱 **Nations Championship Match Fees** | [`data/nations_championship_match_fees.csv`](data/nations_championship_match_fees.csv) | Per-game Test match fee allowances and 12-match estimated test earnings across the 12 Nations Championship teams. |
+| 💵 **Currency Arbitrage & PPP Index** | [`data/currency_exchange_arbitrage.csv`](data/currency_exchange_arbitrage.csv) | Exchange rates (ZAR, NZD, AUD, FJD vs GBP, EUR, JPY) and Purchasing Power Parity (PPP) cost-of-living indices. |
+
+---
+
+## 📐 Mathematical Model & Formula (v3.0)
 
 The Synergy Score $S \in [40, 95]$ is calculated using a weighted multi-dimensional linear index:
 
@@ -29,22 +44,22 @@ $$S = \left( T_i \cdot 0.15 + C_d \cdot 0.25 + F_p \cdot 0.20 + P_c \cdot 0.15 +
 
 ---
 
-## 📊 Benchmark Metrics
-
-- **World Rugby Official Ranking ($WR$):** Fetched directly from World Rugby REST API (`api.wr-rims-prod.pulselive.com`).
-- **Top 10 Win % ($W_{10}$):** Test match win percentage vs Top 10 World Rugby ranked nations over the last 24 months.
-
----
-
 ## 📁 Repository Structure
 
 ```
-rugby-synergy-model/
-├── README.md               <- Model specification, formula & documentation
-├── calc_rugby_synergy.R    <- R pipeline calculating v3.0 scores & outputting JSON
-├── fp_data.csv             <- Front pack (props, hooker, locks) club registrations
-├── rugby_teams.json        <- Exported dataset consumed by web frontend
-└── rugby.html              <- Standalone web dashboard
+rugby2027/
+├── README.md                                 <- Model specification & dataset index
+├── calc_rugby_synergy.R                      <- R pipeline calculating v3.0 scores & outputting JSON/CSVs
+├── fp_data.csv                               <- Front pack (props, hooker, locks) club registrations
+├── rugby_teams.json                          <- Exported dataset consumed by web frontend
+├── rugby.html                                <- Interactive Rugby Synergy Dashboard
+├── salary.html                               <- Interactive Salary Arbitrage & Player Migration Simulator
+└── data/
+    ├── full_synergy_standings.csv            <- Final 6-factor ratings & rankings (CSV)
+    ├── squad_coaching_data.csv               <- Coaching tenure, starter caps & tactical styles (CSV)
+    ├── fp_data_raw.csv                       <- Front row/lock club registration raw data (CSV)
+    ├── nations_championship_match_fees.csv   <- Test match fee comparison table (CSV)
+    └── currency_exchange_arbitrage.csv       <- Exchange rates & purchasing power indices (CSV)
 ```
 
 ---
@@ -53,7 +68,8 @@ rugby-synergy-model/
 
 1. **GAIN LINE Analytics (2023):** Team cohesion and shared experience account for up to 40% of on-field performance variance in international rugby union.
 2. **McCarthy & Collins (2022):** *High Performance Sport:* Shared tactical understanding requires an average of 2.8 seasons of continuous elite competition.
-3. **Swaab et al. (2014):** *Psychological Science:* "The Too-Much-Talent Effect" in interdependent sports — raw individual talent yields diminishing returns without structured team cohesion.
+3. **DataTrends Research:** *$195,000 Median Salary Tipping Point in South African Rugby Labor Migration* (DataTrends.com.au).
+4. **Swaab et al. (2014):** *Psychological Science:* "The Too-Much-Talent Effect" in interdependent sports — raw individual talent yields diminishing returns without structured team cohesion.
 
 ---
 
@@ -64,7 +80,7 @@ rugby-synergy-model/
 - R packages: `jsonlite`, `dplyr`
 
 ```bash
-# Run calculation pipeline in R
+# Run calculation pipeline in R to generate JSON and CSV datasets
 Rscript calc_rugby_synergy.R
 ```
 

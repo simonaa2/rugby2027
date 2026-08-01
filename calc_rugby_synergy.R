@@ -1,21 +1,19 @@
 # ============================================================
 # calc_rugby_synergy.R  —  RWC 2027 Rugby Union Synergy Model v3.0
 # Formula: S = (Ti×0.15 + Cd×0.25 + Fp×0.20 + Pc×0.15 + Ts×0.10 + Sd×0.15) × 10
-# 6 Factors:
-#   Ti: Individual Talent Baseline
-#   Cd: Club / Franchise Cohesion Index
-#   Fp: Forward Pack Cohesion (Rugby-unique set piece unit)
-#   Pc: Playing Combination Index (National XV stability + Caps + Coaching)
-#   Ts: Tactical Style Cohesion (Style clarity + category)
-#   Sd: Squad Depth Index (23-man matchday bench quality & drop-off)
-# Benchmark:
-#   win_pct_top10: Win % vs Top 10 Nations (last 24 months)
+# Exports:
+#   - rugby_teams.json
+#   - data/full_synergy_standings.csv
+#   - data/squad_coaching_data.csv
+#   - data/nations_championship_match_fees.csv
+#   - data/currency_exchange_arbitrage.csv
 # ============================================================
 
 library(jsonlite)
 library(dplyr)
 
-OUT_DIR <- "C:/Users/simon/.gemini/antigravity/scratch/personal-qualities-audit/rugby_pipeline"
+OUT_DIR  <- "C:/Users/simon/.gemini/antigravity/scratch/personal-qualities-audit/rugby_pipeline"
+DATA_DIR <- file.path(OUT_DIR, "data")
 
 cat("=======================================================\n")
 cat("  RUGBY UNION MULTIFACTOR SYNERGY MODEL v3.0 — RWC 2027\n")
@@ -90,6 +88,9 @@ fp_df <- fp_raw %>% rowwise() %>% mutate(
   fp_display   = paste0(dominant_club, " (", fp_max_same, "/5)  ×", tier_mult)
 ) %>% ungroup() %>% select(-fp_info)
 
+# Write raw FP table to data/
+write.csv(fp_raw, file.path(DATA_DIR, "fp_data_raw.csv"), row.names = FALSE)
+
 # ── 3. SQUAD DATA v3.0 (Ti, Cd, Pc, Ts, Sd, Win Rate) ────────
 squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
   team = c(
@@ -152,54 +153,17 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     6.8, 9.0, 5.5, 6.5, 6.0, 4.8,
     6.2, 6.5, 7.2, 4.5
   ),
-  # --- NEW v3.0: Squad Depth Index (Sd) ---
-  # Bench quality (players 16-23) & 23-man matchday drop-off
   Sd = c(
-    9.8, # South Africa: Legendary Bomb Squad (unmatched 23-man depth)
-    8.5, # New Zealand: Super Rugby franchise depth
-    8.2, # Ireland: Leinster/Munster depth, slight tighthead prop gap
-    9.2, # France: Massive Top 14 depth across 23
-    7.8, # England: Solid Premiership bench
-    6.8, # Scotland: Edinburgh/Glasgow depth thinner
-    7.2, # Argentina: European pro bench depth
-    6.5, # Australia: Rebuilding Brumbies/Reds depth
-    6.2, # Fiji: Moana Pasifika / Top 14 bench
-    6.0, # Japan: Japan League One bench
-    5.5, # Wales: Regional depth challenges
-    6.2, # Italy: Benetton/Zebre bench
-    5.8, # Georgia: Pro D2 forward bench
-    4.2, # USA: MLR bench
-    4.8, # Portugal: European bench
-    3.5, # Chile: Local amateur/semi-pro bench
-    3.8, # Spain: División de Honor bench
-    4.5, # Uruguay: Peñarol bench
-    5.2, # Tonga: Pacific veteran bench
-    4.0, # Romania: Domestic bench
-    3.8  # Canada: MLR depth limited
+    9.8, 8.5, 8.2, 9.2, 7.8,
+    6.8, 7.2, 6.5, 6.2, 6.0, 5.5,
+    6.2, 5.8, 4.2, 4.8, 3.5, 3.8,
+    4.5, 5.2, 4.0, 3.8
   ),
-  # --- NEW v3.0: Win % vs Top 10 Nations (last 24 months) ---
   win_pct_top10 = c(
-    82, # South Africa
-    72, # New Zealand
-    80, # Ireland
-    75, # France
-    52, # England
-    55, # Scotland
-    50, # Argentina
-    42, # Australia
-    35, # Fiji
-    30, # Japan
-    25, # Wales
-    40, # Italy
-    20, # Georgia
-    5,  # USA
-    15, # Portugal
-    0,  # Chile
-    5,  # Spain
-    10, # Uruguay
-    10, # Tonga
-    5,  # Romania
-    0   # Canada
+    82, 72, 80, 75, 52,
+    55, 50, 42, 35, 30, 25,
+    40, 20, 5, 15, 0, 5,
+    10, 10, 5, 0
   ),
   n_players = c(
     480, 510, 520, 495, 490,
@@ -209,6 +173,29 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
   ),
   data_source = "research_compiled_v3"
 )
+
+# Export raw squad & coaching dataset
+write.csv(squad_data_v3, file.path(DATA_DIR, "squad_coaching_data.csv"), row.names = FALSE)
+
+# Export Nations Championship Match Fee dataset
+nc_fees <- data.frame(
+  rank = 1:12,
+  team = c("England","Ireland","France","New Zealand","Scotland","Wales","Australia","South Africa","Japan","Italy","Fiji","Georgia"),
+  union_contracting_structure = c("RFU Enhanced Contracts","IRFU Central Contracts + Bonus","FFR Test Match Allowance","NZR Central Pool","SRU Match Fee Pool","WRU Match Scale","RA Central Incentive","SARU PONI Pool + Match Fee","JRFU Match Allowance","FIR Match Bonus","FRU Test Allowance","GRU Match Scale"),
+  match_fee_usd = c(29000, 22000, 20000, 14000, 13000, 11000, 10000, 6800, 6000, 5500, 3000, 2500),
+  est_annual_12match_usd = c(348000, 264000, 240000, 168000, 156000, 132000, 120000, 81600, 72000, 66000, 36000, 30000)
+)
+write.csv(nc_fees, file.path(DATA_DIR, "nations_championship_match_fees.csv"), row.names = FALSE)
+
+# Export Currency Arbitrage dataset
+currency_arbitrage <- data.frame(
+  country = c("South Africa","New Zealand","Australia","Fiji","United Kingdom","France (Eurozone)","Japan"),
+  currency_code = c("ZAR","NZD","AUD","FJD","GBP","EUR","JPY"),
+  symbol = c("R","$","$","$","£","€","¥"),
+  rate_to_usd = c(18.20, 1.65, 1.52, 2.25, 0.78, 0.92, 152.00),
+  ppp_cost_of_living_index = c(1.00, 0.85, 0.85, 1.20, 0.70, 0.75, 0.85)
+)
+write.csv(currency_arbitrage, file.path(DATA_DIR, "currency_exchange_arbitrage.csv"), row.names = FALSE)
 
 # Calculate Pc composite score
 squad_data_v3 <- squad_data_v3 %>%
@@ -254,6 +241,9 @@ s_max <- max(all_data$raw_score)
 all_data$synergy <- round(40 + (all_data$raw_score - s_min)/(s_max - s_min) * 55, 1)
 all_data <- all_data %>% arrange(desc(synergy)) %>% mutate(rank = row_number())
 
+# Export full calculated CSV to data/
+write.csv(all_data, file.path(DATA_DIR, "full_synergy_standings.csv"), row.names = FALSE)
+
 # ── 5. PRINT RESULTS ─────────────────────────────────────────
 cat("\n=== FULL SYNERGY STANDINGS v3.0 ===\n")
 print(as.data.frame(all_data %>%
@@ -273,7 +263,7 @@ teams_list <- lapply(seq_len(nrow(all_data)), function(i) {
     Pc                 = round(r$Pc, 2),
     Ts                 = round(r$Ts, 2),
     Sd                 = round(r$Sd, 2),
-    Xp                 = round(r$Pc, 2), # Fallback for legacy cached HTML
+    Xp                 = round(r$Pc, 2),
     win_pct_top10      = as.integer(r$win_pct_top10),
     profile            = r$profile,
     dominant_club      = r$dominant_club,
@@ -302,3 +292,4 @@ out_json <- list(
 out_path <- file.path(OUT_DIR, "rugby_teams.json")
 write(toJSON(out_json, auto_unbox=TRUE, pretty=TRUE), out_path)
 cat(sprintf("\n🏉 JSON v3.0 written: %s\n   Teams: %d\n", out_path, nrow(all_data)))
+cat(sprintf("📊 Raw CSV datasets written to: %s\n", DATA_DIR))

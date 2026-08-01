@@ -1,0 +1,8 @@
+"country","currency_code","symbol","rate_to_usd","ppp_cost_of_living_index"
+"South Africa","ZAR","R",18.2,1
+"New Zealand","NZD","$",1.65,0.85
+"Australia","AUD","$",1.52,0.85
+"Fiji","FJD","$",2.25,1.2
+"United Kingdom","GBP","£",0.78,0.7
+"France (Eurozone)","EUR","€",0.92,0.75
+"Japan","JPY","¥",152,0.85
