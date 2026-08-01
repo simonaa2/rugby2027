@@ -517,14 +517,22 @@ function openDetail(idx) {
 
     <!-- FORWARD PACK & SQUAD DEPTH CARD -->
     <div class="fp-section">
-      <div class="fp-title">🏋 Forward Pack &amp; 23-Man Bench Depth</div>
+      <div class="fp-title">🏋 Forward Pack, Squad Depth &amp; Injury Mitigation</div>
       <div class="fp-row">
         <span class="fp-pos">Dominant Front Row Franchise</span>
         <span class="fp-club">${t.dominant_club || '—'}</span>
       </div>
       <div class="fp-row">
         <span class="fp-pos">Squad Depth Score (Sd)</span>
-        <span class="fp-club" style="color:#f43f5e;">${t.Sd}/10 (Bench 16–23 quality)</span>
+        <span class="fp-club" style="color:#f43f5e;">${t.Sd}/10 (Bench 16–23 Finishing Power)</span>
+      </div>
+      <div class="fp-row">
+        <span class="fp-pos">Workload &amp; Injury Mitigation</span>
+        <span class="fp-club" style="color:#86efac;">${t.workload_rotation_rating || 'Managed'}</span>
+      </div>
+      <div class="fp-row">
+        <span class="fp-pos">Avg Season Minutes / Workload</span>
+        <span class="fp-club" style="color:#38bdf8;">${t.season_minutes_status || 'Standard'}</span>
       </div>
       <div class="fp-row">
         <span class="fp-pos">Top 10 Test Win % (24 mo)</span>

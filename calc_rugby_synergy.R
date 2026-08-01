@@ -165,6 +165,21 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     40, 20, 5, 15, 0, 5,
     10, 10, 5, 0
   ),
+  # --- NEW: Player Workload & Injury Risk Mitigation ---
+  workload_rotation_rating = c(
+    "Elite (23-man Squad Rotation)","High (Super Rugby Load Managed)","Controlled (IRFU Central Minutes Cap)","Heavy Load (Top 14 Overload Risk)","Moderate (Premiership 24-game Cap)",
+    "High Starter Dependency","Moderate (European Pro Rotation)","Moderate (RA Load Management)","High Fatigue Risk (Global Travel)","Controlled (League One Moderate Games)",
+    "High Fatigue Risk (Thin Squad)","Moderate (Benetton Load Managed)","High Starter Dependency","Moderate (MLR Workload)","High Fatigue Risk",
+    "Extreme Fatigue Risk (Amateur/Pro Mix)","High Fatigue Risk","Moderate (Peñarol Centrally Managed)","High Fatigue Risk (Veteran Load)",
+    "High Fatigue Risk","High Fatigue Risk"
+  ),
+  season_minutes_status = c(
+    "~1,400 mins/yr (Centrally Managed)","~1,600 mins/yr (SR Managed)","~1,350 mins/yr (Strict IRFU Cap)","~2,200 mins/yr (Top 14 Heavy)","~1,800 mins/yr (Prem Cap)",
+    "~1,900 mins/yr (High Overuse)","~1,850 mins/yr (Euro Pro)","~1,650 mins/yr (RA Managed)","~2,000 mins/yr (Travel Heavy)","~1,200 mins/yr (JRLO Short Season)",
+    "~2,000 mins/yr (Overuse Risk)","~1,700 mins/yr (Benetton Core)","~2,100 mins/yr (Pro D2 Heavy)","~1,500 mins/yr (MLR Season)","~1,900 mins/yr (French Pro D2)",
+    "~1,800 mins/yr (Amateur Load)","~1,700 mins/yr (Local Load)","~1,400 mins/yr (SLAR Managed)","~1,800 mins/yr (Veteran Overuse)","~1,900 mins/yr (Domestic)",
+    "~1,600 mins/yr (MLR Load)"
+  ),
   n_players = c(
     480, 510, 520, 495, 490,
     360, 380, 420, 280, 290, 370,
@@ -276,7 +291,9 @@ teams_list <- lapply(seq_len(nrow(all_data)), function(i) {
     avg_starter_caps   = r$avg_starter_caps,
     combination_status = r$combination_status,
     style_category     = r$style_category,
-    style_icon         = r$style_icon
+    style_icon         = r$style_icon,
+    workload_rotation_rating = r$workload_rotation_rating,
+    season_minutes_status    = r$season_minutes_status
   )
 })
 

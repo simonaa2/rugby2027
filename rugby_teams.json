@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T08:36:19Z",
+  "generated_at": "2026-08-01T08:44:05Z",
   "model_version": "rugby_v3.0",
   "tournament": "RWC 2027 Australia",
   "total_teams": 21,
@@ -29,7 +29,9 @@
       "avg_starter_caps": 68,
       "combination_status": "Settled 6-Nations Champion Core",
       "style_category": "Set Piece & Lineout Drive",
-      "style_icon": "🎯"
+      "style_icon": "🎯",
+      "workload_rotation_rating": "Controlled (IRFU Central Minutes Cap)",
+      "season_minutes_status": "~1,350 mins/yr (Strict IRFU Cap)"
     },
     {
       "rank": 2,
@@ -55,7 +57,9 @@
       "avg_starter_caps": 56,
       "combination_status": "Settled Grand Slam Core",
       "style_category": "Expansive & Unpredictable",
-      "style_icon": "🔥"
+      "style_icon": "🔥",
+      "workload_rotation_rating": "Heavy Load (Top 14 Overload Risk)",
+      "season_minutes_status": "~2,200 mins/yr (Top 14 Heavy)"
     },
     {
       "rank": 3,
@@ -81,7 +85,9 @@
       "avg_starter_caps": 74,
       "combination_status": "World Cup Champion Core (3+ yrs)",
       "style_category": "Set Piece & Bomb Squad",
-      "style_icon": "🛡️"
+      "style_icon": "🛡️",
+      "workload_rotation_rating": "Elite (23-man Squad Rotation)",
+      "season_minutes_status": "~1,400 mins/yr (Centrally Managed)"
     },
     {
       "rank": 4,
@@ -107,7 +113,9 @@
       "avg_starter_caps": 58,
       "combination_status": "Long-standing Core",
       "style_category": "Fast Attacking & Loose-Ball",
-      "style_icon": "💨"
+      "style_icon": "💨",
+      "workload_rotation_rating": "High Starter Dependency",
+      "season_minutes_status": "~1,900 mins/yr (High Overuse)"
     },
     {
       "rank": 5,
@@ -133,7 +141,9 @@
       "avg_starter_caps": 36,
       "combination_status": "Quesada Evolving Unit",
       "style_category": "High-Tempo & Counter",
-      "style_icon": "💨"
+      "style_icon": "💨",
+      "workload_rotation_rating": "Moderate (Benetton Load Managed)",
+      "season_minutes_status": "~1,700 mins/yr (Benetton Core)"
     },
     {
       "rank": 6,
@@ -159,7 +169,9 @@
       "avg_starter_caps": 38,
       "combination_status": "Gatland Major Rebuild",
       "style_category": "Developing Direct Game",
-      "style_icon": "🌱"
+      "style_icon": "🌱",
+      "workload_rotation_rating": "High Fatigue Risk (Thin Squad)",
+      "season_minutes_status": "~2,000 mins/yr (Overuse Risk)"
     },
     {
       "rank": 7,
@@ -185,7 +197,9 @@
       "avg_starter_caps": 62,
       "combination_status": "New World Cup Cycle Rebuild",
       "style_category": "Running & Width",
-      "style_icon": "⚡"
+      "style_icon": "⚡",
+      "workload_rotation_rating": "High (Super Rugby Load Managed)",
+      "season_minutes_status": "~1,600 mins/yr (SR Managed)"
     },
     {
       "rank": 8,
@@ -211,7 +225,9 @@
       "avg_starter_caps": 52,
       "combination_status": "Rebuilt Post-2023 Unit",
       "style_category": "Kicking & Field Position",
-      "style_icon": "👟"
+      "style_icon": "👟",
+      "workload_rotation_rating": "Moderate (Premiership 24-game Cap)",
+      "season_minutes_status": "~1,800 mins/yr (Prem Cap)"
     },
     {
       "rank": 9,
@@ -237,7 +253,9 @@
       "avg_starter_caps": 44,
       "combination_status": "Eddie Jones Young Squad",
       "style_category": "High-Tempo & Passing",
-      "style_icon": "⚡"
+      "style_icon": "⚡",
+      "workload_rotation_rating": "Controlled (League One Moderate Games)",
+      "season_minutes_status": "~1,200 mins/yr (JRLO Short Season)"
     },
     {
       "rank": 10,
@@ -263,7 +281,9 @@
       "avg_starter_caps": 35,
       "combination_status": "Pacific Veteran Core",
       "style_category": "Direct Pacific Power",
-      "style_icon": "💥"
+      "style_icon": "💥",
+      "workload_rotation_rating": "High Fatigue Risk (Veteran Load)",
+      "season_minutes_status": "~1,800 mins/yr (Veteran Overuse)"
     },
     {
       "rank": 11,
@@ -289,7 +309,9 @@
       "avg_starter_caps": 48,
       "combination_status": "Schmidt Rebuilding Phase",
       "style_category": "Kicking & Counter-Attack",
-      "style_icon": "👟"
+      "style_icon": "👟",
+      "workload_rotation_rating": "Moderate (RA Load Management)",
+      "season_minutes_status": "~1,650 mins/yr (RA Managed)"
     },
     {
       "rank": 12,
@@ -315,7 +337,9 @@
       "avg_starter_caps": 42,
       "combination_status": "Pacific Hybrid Combination",
       "style_category": "Unstructured Running Rugby",
-      "style_icon": "🏃"
+      "style_icon": "🏃",
+      "workload_rotation_rating": "High Fatigue Risk (Global Travel)",
+      "season_minutes_status": "~2,000 mins/yr (Travel Heavy)"
     },
     {
       "rank": 13,
@@ -341,7 +365,9 @@
       "avg_starter_caps": 45,
       "combination_status": "Set-Piece Heavy Core",
       "style_category": "Set Piece Warriors",
-      "style_icon": "🛡️"
+      "style_icon": "🛡️",
+      "workload_rotation_rating": "High Starter Dependency",
+      "season_minutes_status": "~2,100 mins/yr (Pro D2 Heavy)"
     },
     {
       "rank": 14,
@@ -367,7 +393,9 @@
       "avg_starter_caps": 64,
       "combination_status": "Post-Cheika Transition",
       "style_category": "Physicality & Breakdown",
-      "style_icon": "💥"
+      "style_icon": "💥",
+      "workload_rotation_rating": "Moderate (European Pro Rotation)",
+      "season_minutes_status": "~1,850 mins/yr (Euro Pro)"
     },
     {
       "rank": 15,
@@ -393,7 +421,9 @@
       "avg_starter_caps": 30,
       "combination_status": "Domestic Core Unit",
       "style_category": "Physical Breakdown Game",
-      "style_icon": "💥"
+      "style_icon": "💥",
+      "workload_rotation_rating": "Moderate (Peñarol Centrally Managed)",
+      "season_minutes_status": "~1,400 mins/yr (SLAR Managed)"
     },
     {
       "rank": 16,
@@ -419,7 +449,9 @@
       "avg_starter_caps": 28,
       "combination_status": "European Professional Core",
       "style_category": "Fast & Offloading",
-      "style_icon": "💨"
+      "style_icon": "💨",
+      "workload_rotation_rating": "High Fatigue Risk",
+      "season_minutes_status": "~1,900 mins/yr (French Pro D2)"
     },
     {
       "rank": 17,
@@ -445,7 +477,9 @@
       "avg_starter_caps": 38,
       "combination_status": "Eastern European Pack Unit",
       "style_category": "Set Piece & Maul",
-      "style_icon": "🛡️"
+      "style_icon": "🛡️",
+      "workload_rotation_rating": "High Fatigue Risk",
+      "season_minutes_status": "~1,900 mins/yr (Domestic)"
     },
     {
       "rank": 18,
@@ -471,7 +505,9 @@
       "avg_starter_caps": 20,
       "combination_status": "División de Honor Core",
       "style_category": "Developing Identity",
-      "style_icon": "🌱"
+      "style_icon": "🌱",
+      "workload_rotation_rating": "High Fatigue Risk",
+      "season_minutes_status": "~1,700 mins/yr (Local Load)"
     },
     {
       "rank": 19,
@@ -497,7 +533,9 @@
       "avg_starter_caps": 24,
       "combination_status": "MLR Native Squad",
       "style_category": "Developing Identity",
-      "style_icon": "🌱"
+      "style_icon": "🌱",
+      "workload_rotation_rating": "High Fatigue Risk",
+      "season_minutes_status": "~1,600 mins/yr (MLR Load)"
     },
     {
       "rank": 20,
@@ -523,7 +561,9 @@
       "avg_starter_caps": 32,
       "combination_status": "MLR Hybrid Unit",
       "style_category": "Direct MLR Physicality",
-      "style_icon": "💥"
+      "style_icon": "💥",
+      "workload_rotation_rating": "Moderate (MLR Workload)",
+      "season_minutes_status": "~1,500 mins/yr (MLR Season)"
     },
     {
       "rank": 21,
@@ -549,7 +589,9 @@
       "avg_starter_caps": 22,
       "combination_status": "Super Rugby Americas Core",
       "style_category": "URBA Direct Physicality",
-      "style_icon": "💥"
+      "style_icon": "💥",
+      "workload_rotation_rating": "Extreme Fatigue Risk (Amateur/Pro Mix)",
+      "season_minutes_status": "~1,800 mins/yr (Amateur Load)"
     }
   ]
 }
