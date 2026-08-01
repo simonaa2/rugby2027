@@ -1,0 +1,41 @@
+player_name,team,club,league,salary_usd,caps,role,perf_score,pvi,net_ppp_usd,status
+Eben Etzebeth,South Africa 🇿🇦,Sharks,URC,280000,120,Starter (Spine),95.0,3.39,168000,Massively Underpaid
+Ox Nché,South Africa 🇿🇦,Sharks,URC,150000,35,Starter,78.0,5.20,90000,Massively Underpaid
+Bongi Mbonambi,South Africa 🇿🇦,Sharks,URC,160000,68,Starter (Spine),82.0,5.13,96000,Massively Underpaid
+Frans Malherbe,South Africa 🇿🇦,Stormers,URC,210000,69,Starter,84.0,4.00,126000,Massively Underpaid
+Siya Kolisi,South Africa 🇿🇦,Sharks,URC,550000,85,Starter (Spine),92.0,1.67,330000,Underpaid
+Cheslin Kolbe,South Africa 🇿🇦,Suntory,Japan JRLO,950000,38,Starter,91.0,0.96,642200,Fair Value
+Malcolm Marx,South Africa 🇿🇦,Spears,Japan JRLO,680000,64,Bench / Rotation,85.0,1.25,459680,Fair Value
+Vincent Koch,South Africa 🇿🇦,Sharks,URC,190000,49,Bench / Rotation,75.0,3.95,114000,Underpaid
+Ardie Savea,New Zealand 🇳🇿,Kobe,Japan JRLO,750000,84,Starter (Spine),94.0,1.25,507000,Fair Value
+Codie Taylor,New Zealand 🇳🇿,Crusaders,Super Rugby,340000,85,Starter (Spine),86.0,2.53,176290,Underpaid
+Scott Barrett,New Zealand 🇳🇿,Crusaders,Super Rugby,410000,69,Starter,85.0,2.07,212585,Underpaid
+Jordie Barrett,New Zealand 🇳🇿,Hurricanes,Super Rugby,380000,60,Starter,83.0,2.18,197030,Underpaid
+Rieko Ioane,New Zealand 🇳🇿,Blues,Super Rugby,390000,67,Starter,84.0,2.15,202215,Underpaid
+Dan Sheehan,Ireland 🇮🇪,Leinster,URC,240000,26,Starter (Spine),88.0,3.67,131040,Underpaid
+Andrew Porter,Ireland 🇮🇪,Leinster,URC,320000,62,Starter,85.0,2.66,174720,Underpaid
+Tadhg Furlong,Ireland 🇮🇪,Leinster,URC,450000,72,Starter,89.0,1.98,245700,Underpaid
+Caelan Doris,Ireland 🇮🇪,Leinster,URC,380000,43,Starter (Spine),90.0,2.37,207480,Underpaid
+Jamison Gibson-Park,Ireland 🇮🇪,Leinster,URC,320000,35,Starter (Spine),87.0,2.72,174720,Underpaid
+Antoine Dupont,France 🇫🇷,Toulouse,Top 14,950000,52,Starter (Spine),98.0,1.03,391875,Fair Value
+Thomas Ramos,France 🇫🇷,Toulouse,Top 14,620000,36,Starter (Spine),86.0,1.39,255750,Fair Value
+Grégory Alldritt,France 🇫🇷,La Rochelle,Top 14,720000,48,Starter (Spine),90.0,1.25,297000,Fair Value
+Peato Mauvaka,France 🇫🇷,Toulouse,Top 14,480000,32,Starter (Spine),82.0,1.71,198000,Underpaid
+Mid-Tier Top 14 Prop,France 🇫🇷,Top 14 Club,Top 14,460000,3,Rotation,25.0,0.54,189750,Overpaid
+Maro Itoje,England 🏴󠁧󠁢󠁥󠁮󠁧󠁿,Saracens,Premiership,850000,76,Starter,90.0,1.06,327250,Fair Value
+Ellis Genge,England 🏴󠁧󠁢󠁥󠁮󠁧󠁿,Bristol,Premiership,580000,58,Starter,82.0,1.41,223300,Fair Value
+Ben Earl,England 🏴󠁧󠁢󠁥󠁮󠁧󠁿,Saracens,Premiership,420000,30,Starter (Spine),84.0,2.00,161700,Underpaid
+Premiership Rotation Lock,England 🏴󠁧󠁢󠁥󠁮󠁧󠁿,Premiership Club,Premiership,380000,2,Rotation,22.0,0.58,146300,Overpaid
+Finn Russell,Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿,Bath,Premiership,1150000,75,Starter (Spine),92.0,0.80,442750,Fair Value
+Duhan van der Merwe,Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿,Edinburgh,URC,380000,39,Starter,82.0,2.16,207480,Underpaid
+Zander Fagerson,Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿,Glasgow,URC,310000,62,Starter,80.0,2.58,169260,Underpaid
+Marcos Kremer,Argentina 🇦🇷,Clermont,Top 14,480000,64,Starter,82.0,1.71,198000,Underpaid
+Emiliano Boffelli,Argentina 🇦🇷,Edinburgh,URC,320000,60,Starter,78.0,2.44,174720,Underpaid
+Rob Valetini,Australia 🇦🇺,Brumbies,Super Rugby,350000,39,Starter (Spine),84.0,2.40,160875,Underpaid
+Will Skelton,Australia 🇦🇺,La Rochelle,Top 14,680000,30,Starter,80.0,1.18,280500,Fair Value
+Taniela Tupou,Australia 🇦🇺,Reds,Super Rugby,420000,51,Starter,82.0,1.95,193200,Underpaid
+Te Vita Ikanivere,Fiji 🇫🇯,Drua,Super Rugby,65000,15,Starter (Spine),62.0,9.54,62400,Massively Underpaid
+Waisea Nayacalevu,Fiji 🇫🇯,Sale,Premiership,340000,38,Starter,78.0,2.29,130900,Underpaid
+Eroni Mawi,Fiji 🇫🇯,Saracens,Premiership,220000,32,Starter,68.0,3.09,84700,Underpaid
+Warner Dearns,Japan 🇯🇵,Toshiba,Japan JRLO,380000,18,Starter,72.0,1.89,256800,Underpaid
+Keita Inagaki,Japan 🇯🇵,Wild Knights,Japan JRLO,320000,49,Starter,76.0,2.38,216200,Underpaid

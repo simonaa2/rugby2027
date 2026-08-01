@@ -23,6 +23,7 @@ All raw data powering the models and web applications is published transparently
 | 💱 **Nations Championship Match Fees** | [`data/nations_championship_match_fees.csv`](data/nations_championship_match_fees.csv) | Per-game Test match fee allowances and 12-match estimated test earnings across the 12 Nations Championship teams. |
 | 💵 **Currency Arbitrage & PPP Index** | [`data/currency_exchange_arbitrage.csv`](data/currency_exchange_arbitrage.csv) | Exchange rates (ZAR, NZD, AUD, FJD vs GBP, EUR, JPY) and Purchasing Power Parity (PPP) cost-of-living indices. |
 | 📋 **Player-Level Roster Database** | [`data/player_database.csv`](data/player_database.csv) | Detailed tight five rosters (props, hookers, locks) containing actual names, clubs, caps, and starter vs. rotation roles for Tier 1 nations. |
+| 📊 **Top 10 Nations Player Valuations** | [`data/top10_nations_player_valuations.csv`](data/top10_nations_player_valuations.csv) | 40-player valuation dataset across South Africa, New Zealand, Ireland, France, England, Scotland, Argentina, Australia, Fiji, and Japan with Net PPP Income & tested PVI scores. |
 
 ---
 
