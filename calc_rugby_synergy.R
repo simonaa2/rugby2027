@@ -224,11 +224,46 @@ squad_data_v3 <- squad_data_v3 %>%
   ) %>%
   ungroup()
 
+# Load player database for dynamic spine calculation
+player_db <- read.csv(file.path(DATA_DIR, "player_database.csv"), stringsAsFactors = FALSE)
+
+# Calculate Spine Cohesion (2, 8, 9, 10, 15) per team
+spine_scores <- lapply(unique(squad_data_v3$team), function(tm) {
+  team_spine <- player_db %>% filter(team == tm & (grepl("Spine", role) | (position == "Hooker" & role == "Starter")))
+  spine_clubs <- team_spine$club
+  spine_clubs <- spine_clubs[spine_clubs != "" & !is.na(spine_clubs)]
+  
+  if (length(spine_clubs) > 0) {
+    tbl <- sort(table(spine_clubs), decreasing = TRUE)
+    max_same <- as.integer(tbl[1])
+    dom_club <- names(tbl)[1]
+    
+    score <- if (max_same == 5) 10.0
+             else if (max_same == 4) 9.0
+             else if (max_same == 3) 7.0
+             else if (max_same == 2) 4.5
+             else 2.0
+  } else {
+    max_same <- 1
+    dom_club <- "Scattered"
+    score <- 2.0
+  }
+  
+  data.frame(
+    team = tm,
+    spine_dominant_club = dom_club,
+    spine_match_count = max_same,
+    spine_score = score,
+    stringsAsFactors = FALSE
+  )
+}) %>% bind_rows()
+
 # ── 4. MERGE & CALCULATE SYNERGY v3.0 ────────────────────────
 cat("\n⏳ Merging and calculating v3.0 synergy scores...\n")
 
 all_data <- squad_data_v3 %>%
   left_join(fp_df %>% select(team, Fp, dominant_club, fp_display, fp_max_same), by="team") %>%
+  left_join(spine_scores, by="team") %>%
   left_join(wr_ranks %>% select(team, wr_rank, wr_pts), by="team")
 
 all_data$Fp[is.na(all_data$Fp)] <- 2.0
@@ -242,12 +277,14 @@ classify_profile <- function(Cd, Fp, Ti, Pc, Sd) {
   return("Rising Challenger")
 }
 
-# Formula v3.0: S = (Ti×0.15 + Cd×0.25 + Fp×0.20 + Pc×0.15 + Ts×0.10 + Sd×0.15) × 10
+# Formula v3.0: S = (Ti×0.15 + (Cd + spine_bonus)×0.25 + Fp×0.20 + Pc×0.15 + Ts×0.10 + Sd×0.15) × 10
+# spine_bonus: up to +0.75 for elite spines (matches of 3+)
 all_data <- all_data %>%
   rowwise() %>%
   mutate(
+    spine_bonus = (spine_score / 10.0) * 0.75,
     profile   = classify_profile(Cd, Fp, Ti, Pc, Sd),
-    raw_score = Ti*0.15 + Cd*0.25 + Fp*0.20 + Pc*0.15 + Ts*0.10 + Sd*0.15
+    raw_score = Ti*0.15 + (Cd + spine_bonus)*0.25 + Fp*0.20 + Pc*0.15 + Ts*0.10 + Sd*0.15
   ) %>%
   ungroup()
 
@@ -314,7 +351,10 @@ teams_list <- lapply(seq_len(nrow(all_data)), function(i) {
     style_icon         = r$style_icon,
     workload_rotation_rating = r$workload_rotation_rating,
     season_minutes_status    = r$season_minutes_status,
-    players            = players_list
+    spine_dominant_club      = r$spine_dominant_club,
+    spine_match_count        = as.integer(r$spine_match_count),
+    spine_score              = round(r$spine_score, 1),
+    players                  = players_list
   )
 })
 

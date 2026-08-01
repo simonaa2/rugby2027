@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T09:01:58Z",
+  "generated_at": "2026-08-01T09:10:49Z",
   "model_version": "rugby_v3.0",
   "tournament": "RWC 2027 Australia",
   "total_teams": 21,
@@ -32,6 +32,9 @@
       "style_icon": "🎯",
       "workload_rotation_rating": "Controlled (IRFU Central Minutes Cap)",
       "season_minutes_status": "~1,350 mins/yr (Strict IRFU Cap)",
+      "spine_dominant_club": "Leinster",
+      "spine_match_count": 4,
+      "spine_score": 9,
       "players": [
         {
           "name": "Andrew Porter",
@@ -45,7 +48,7 @@
           "position": "Hooker",
           "club": "Leinster",
           "caps": 26,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Tadhg Furlong",
@@ -95,6 +98,41 @@
           "club": "Leinster",
           "caps": 64,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "John Ryan",
+          "position": "Tighthead Prop",
+          "club": "Munster",
+          "caps": 24,
+          "role": "Retired / Veteran Depth"
+        },
+        {
+          "name": "Caelan Doris",
+          "position": "Number 8",
+          "club": "Leinster",
+          "caps": 43,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Jamison Gibson-Park",
+          "position": "Scrumhalf",
+          "club": "Leinster",
+          "caps": 35,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Jack Crowley",
+          "position": "Flyhalf",
+          "club": "Munster",
+          "caps": 18,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Hugo Keenan",
+          "position": "Fullback",
+          "club": "Leinster",
+          "caps": 39,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -102,7 +140,7 @@
       "rank": 2,
       "wr_rank": 4,
       "team": "France",
-      "synergy": 87.9,
+      "synergy": 88.1,
       "Ti": 9.6,
       "Cd": 7.2,
       "Fp": 6.5,
@@ -125,6 +163,9 @@
       "style_icon": "🔥",
       "workload_rotation_rating": "Heavy Load (Top 14 Overload Risk)",
       "season_minutes_status": "~2,200 mins/yr (Top 14 Heavy)",
+      "spine_dominant_club": "Toulouse",
+      "spine_match_count": 4,
+      "spine_score": 9,
       "players": [
         {
           "name": "Cyril Baille",
@@ -138,7 +179,7 @@
           "position": "Hooker",
           "club": "Toulouse",
           "caps": 32,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Uini Atonio",
@@ -188,6 +229,34 @@
           "club": "Montpellier",
           "caps": 31,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Grégory Alldritt",
+          "position": "Number 8",
+          "club": "La Rochelle",
+          "caps": 48,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Antoine Dupont",
+          "position": "Scrumhalf",
+          "club": "Toulouse",
+          "caps": 52,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Romain Ntamack",
+          "position": "Flyhalf",
+          "club": "Toulouse",
+          "caps": 37,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Thomas Ramos",
+          "position": "Fullback",
+          "club": "Toulouse",
+          "caps": 36,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -195,7 +264,7 @@
       "rank": 3,
       "wr_rank": 1,
       "team": "South Africa",
-      "synergy": 82.7,
+      "synergy": 82.1,
       "Ti": 9.8,
       "Cd": 5.8,
       "Fp": 4.5,
@@ -218,6 +287,9 @@
       "style_icon": "🛡️",
       "workload_rotation_rating": "Elite (23-man Squad Rotation)",
       "season_minutes_status": "~1,400 mins/yr (Centrally Managed)",
+      "spine_dominant_club": "Stormers",
+      "spine_match_count": 2,
+      "spine_score": 4.5,
       "players": [
         {
           "name": "Ox Nché",
@@ -231,7 +303,7 @@
           "position": "Hooker",
           "club": "Sharks",
           "caps": 68,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Frans Malherbe",
@@ -295,6 +367,34 @@
           "club": "Stormers",
           "caps": 15,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Jasper Wiese",
+          "position": "Number 8",
+          "club": "Leicester",
+          "caps": 31,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Faf de Klerk",
+          "position": "Scrumhalf",
+          "club": "Spears (Japan)",
+          "caps": 94,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Manie Libbok",
+          "position": "Flyhalf",
+          "club": "Stormers",
+          "caps": 18,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Damian Willemse",
+          "position": "Fullback",
+          "club": "Stormers",
+          "caps": 40,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -302,7 +402,7 @@
       "rank": 4,
       "wr_rank": 6,
       "team": "Scotland",
-      "synergy": 71.9,
+      "synergy": 71,
       "Ti": 8.8,
       "Cd": 5.5,
       "Fp": 4.5,
@@ -325,13 +425,16 @@
       "style_icon": "💨",
       "workload_rotation_rating": "High Starter Dependency",
       "season_minutes_status": "~1,900 mins/yr (High Overuse)",
+      "spine_dominant_club": "Scattered",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": []
     },
     {
       "rank": 5,
       "wr_rank": 12,
       "team": "Italy",
-      "synergy": 71.4,
+      "synergy": 70.5,
       "Ti": 7.5,
       "Cd": 5.8,
       "Fp": 8,
@@ -354,6 +457,9 @@
       "style_icon": "💨",
       "workload_rotation_rating": "Moderate (Benetton Load Managed)",
       "season_minutes_status": "~1,700 mins/yr (Benetton Core)",
+      "spine_dominant_club": "Benetton",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Danilo Fischetti",
@@ -367,7 +473,7 @@
           "position": "Hooker",
           "club": "Benetton",
           "caps": 22,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Simone Ferrari",
@@ -417,7 +523,7 @@
       "rank": 6,
       "wr_rank": 11,
       "team": "Wales",
-      "synergy": 67.4,
+      "synergy": 67.2,
       "Ti": 7.8,
       "Cd": 6.5,
       "Fp": 8,
@@ -440,6 +546,9 @@
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk (Thin Squad)",
       "season_minutes_status": "~2,000 mins/yr (Overuse Risk)",
+      "spine_dominant_club": "Cardiff",
+      "spine_match_count": 2,
+      "spine_score": 4.5,
       "players": [
         {
           "name": "Gareth Thomas",
@@ -453,7 +562,7 @@
           "position": "Hooker",
           "club": "Ospreys",
           "caps": 15,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Tomas Francis",
@@ -503,6 +612,34 @@
           "club": "Racing 92",
           "caps": 31,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Aaron Wainwright",
+          "position": "Number 8",
+          "club": "Dragons",
+          "caps": 48,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Tomos Williams",
+          "position": "Scrumhalf",
+          "club": "Cardiff",
+          "caps": 53,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Sam Costelow",
+          "position": "Flyhalf",
+          "club": "Scarlets",
+          "caps": 15,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Cameron Winnett",
+          "position": "Fullback",
+          "club": "Cardiff",
+          "caps": 7,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -510,7 +647,7 @@
       "rank": 7,
       "wr_rank": 2,
       "team": "New Zealand",
-      "synergy": 67.1,
+      "synergy": 66.9,
       "Ti": 9.7,
       "Cd": 4.5,
       "Fp": 4.5,
@@ -533,6 +670,9 @@
       "style_icon": "⚡",
       "workload_rotation_rating": "High (Super Rugby Load Managed)",
       "season_minutes_status": "~1,600 mins/yr (SR Managed)",
+      "spine_dominant_club": "Chiefs",
+      "spine_match_count": 2,
+      "spine_score": 4.5,
       "players": [
         {
           "name": "Ethan de Groot",
@@ -546,7 +686,7 @@
           "position": "Hooker",
           "club": "Crusaders",
           "caps": 85,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Tyrel Lomax",
@@ -596,6 +736,34 @@
           "club": "Crusaders",
           "caps": 8,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Ardie Savea",
+          "position": "Number 8",
+          "club": "Kobe (Japan)",
+          "caps": 84,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Cortez Ratima",
+          "position": "Scrumhalf",
+          "club": "Chiefs",
+          "caps": 8,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Damian McKenzie",
+          "position": "Flyhalf",
+          "club": "Chiefs",
+          "caps": 50,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Will Jordan",
+          "position": "Fullback",
+          "club": "Crusaders",
+          "caps": 31,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -603,7 +771,7 @@
       "rank": 8,
       "wr_rank": 5,
       "team": "England",
-      "synergy": 66.9,
+      "synergy": 66.7,
       "Ti": 9.4,
       "Cd": 5,
       "Fp": 4.5,
@@ -626,6 +794,9 @@
       "style_icon": "👟",
       "workload_rotation_rating": "Moderate (Premiership 24-game Cap)",
       "season_minutes_status": "~1,800 mins/yr (Prem Cap)",
+      "spine_dominant_club": "Saracens",
+      "spine_match_count": 2,
+      "spine_score": 4.5,
       "players": [
         {
           "name": "Ellis Genge",
@@ -639,7 +810,7 @@
           "position": "Hooker",
           "club": "Saracens",
           "caps": 88,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Dan Cole",
@@ -689,6 +860,34 @@
           "club": "Leicester",
           "caps": 10,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Ben Earl",
+          "position": "Number 8",
+          "club": "Saracens",
+          "caps": 30,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Alex Mitchell",
+          "position": "Scrumhalf",
+          "club": "Northampton",
+          "caps": 18,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "George Ford",
+          "position": "Flyhalf",
+          "club": "Sale",
+          "caps": 96,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Freddie Steward",
+          "position": "Fullback",
+          "club": "Leicester",
+          "caps": 34,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -696,7 +895,7 @@
       "rank": 9,
       "wr_rank": 10,
       "team": "Japan",
-      "synergy": 63.6,
+      "synergy": 62.9,
       "Ti": 7.5,
       "Cd": 5.5,
       "Fp": 5.3,
@@ -719,6 +918,9 @@
       "style_icon": "⚡",
       "workload_rotation_rating": "Controlled (League One Moderate Games)",
       "season_minutes_status": "~1,200 mins/yr (JRLO Short Season)",
+      "spine_dominant_club": "Wild Knights",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Keita Inagaki",
@@ -732,7 +934,7 @@
           "position": "Hooker",
           "club": "Wild Knights",
           "caps": 37,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Jiwon Gu",
@@ -782,7 +984,7 @@
       "rank": 10,
       "wr_rank": 19,
       "team": "Tonga",
-      "synergy": 62.9,
+      "synergy": 62.3,
       "Ti": 5.5,
       "Cd": 4.8,
       "Fp": 8,
@@ -805,6 +1007,9 @@
       "style_icon": "💥",
       "workload_rotation_rating": "High Fatigue Risk (Veteran Load)",
       "season_minutes_status": "~1,800 mins/yr (Veteran Overuse)",
+      "spine_dominant_club": "Castres",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Siegfried Fisi'ihoi",
@@ -818,7 +1023,7 @@
           "position": "Hooker",
           "club": "Castres",
           "caps": 30,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Ben Tameifuna",
@@ -868,7 +1073,7 @@
       "rank": 11,
       "wr_rank": 8,
       "team": "Australia",
-      "synergy": 60.7,
+      "synergy": 61.6,
       "Ti": 8.3,
       "Cd": 4.8,
       "Fp": 4.5,
@@ -891,6 +1096,9 @@
       "style_icon": "👟",
       "workload_rotation_rating": "Moderate (RA Load Management)",
       "season_minutes_status": "~1,650 mins/yr (RA Managed)",
+      "spine_dominant_club": "Brumbies",
+      "spine_match_count": 4,
+      "spine_score": 9,
       "players": [
         {
           "name": "Angus Bell",
@@ -902,9 +1110,9 @@
         {
           "name": "Matt Faessler",
           "position": "Hooker",
-          "club": "Reds",
+          "club": "Brumbies",
           "caps": 13,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Allan Alaalatoa",
@@ -954,6 +1162,34 @@
           "club": "Reds",
           "caps": 32,
           "role": "Bench / Rotation"
+        },
+        {
+          "name": "Rob Valetini",
+          "position": "Number 8",
+          "club": "Brumbies",
+          "caps": 39,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Tate McDermott",
+          "position": "Scrumhalf",
+          "club": "Reds",
+          "caps": 28,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Noah Lolesio",
+          "position": "Flyhalf",
+          "club": "Brumbies",
+          "caps": 20,
+          "role": "Starter (Spine)"
+        },
+        {
+          "name": "Tom Wright",
+          "position": "Fullback",
+          "club": "Brumbies",
+          "caps": 25,
+          "role": "Starter (Spine)"
         }
       ]
     },
@@ -961,7 +1197,7 @@
       "rank": 12,
       "wr_rank": 9,
       "team": "Fiji",
-      "synergy": 60.1,
+      "synergy": 59.6,
       "Ti": 7.8,
       "Cd": 4.5,
       "Fp": 4.5,
@@ -984,6 +1220,9 @@
       "style_icon": "🏃",
       "workload_rotation_rating": "High Fatigue Risk (Global Travel)",
       "season_minutes_status": "~2,000 mins/yr (Travel Heavy)",
+      "spine_dominant_club": "Drua",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Eroni Mawi",
@@ -997,7 +1236,7 @@
           "position": "Hooker",
           "club": "Drua",
           "caps": 15,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Mesake Doge",
@@ -1047,7 +1286,7 @@
       "rank": 13,
       "wr_rank": 13,
       "team": "Georgia",
-      "synergy": 59.4,
+      "synergy": 58.8,
       "Ti": 6.5,
       "Cd": 4.2,
       "Fp": 4.47,
@@ -1070,6 +1309,9 @@
       "style_icon": "🛡️",
       "workload_rotation_rating": "High Starter Dependency",
       "season_minutes_status": "~2,100 mins/yr (Pro D2 Heavy)",
+      "spine_dominant_club": "Tbilisi",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Nika Abuladze",
@@ -1083,7 +1325,7 @@
           "position": "Hooker",
           "club": "Tbilisi",
           "caps": 103,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Beka Gigashvili",
@@ -1133,7 +1375,7 @@
       "rank": 14,
       "wr_rank": 7,
       "team": "Argentina",
-      "synergy": 58.8,
+      "synergy": 58.3,
       "Ti": 8.5,
       "Cd": 3.8,
       "Fp": 2,
@@ -1156,13 +1398,16 @@
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (European Pro Rotation)",
       "season_minutes_status": "~1,850 mins/yr (Euro Pro)",
+      "spine_dominant_club": "Scattered",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": []
     },
     {
       "rank": 15,
       "wr_rank": 18,
       "team": "Uruguay",
-      "synergy": 52,
+      "synergy": 51.7,
       "Ti": 4.8,
       "Cd": 5,
       "Fp": 4.4,
@@ -1185,6 +1430,9 @@
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (Peñarol Centrally Managed)",
       "season_minutes_status": "~1,400 mins/yr (SLAR Managed)",
+      "spine_dominant_club": "Peñarol",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Mateo Sanguinetti",
@@ -1198,7 +1446,7 @@
           "position": "Hooker",
           "club": "Peñarol",
           "caps": 65,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Ignacio Péculo",
@@ -1248,7 +1496,7 @@
       "rank": 16,
       "wr_rank": 15,
       "team": "Portugal",
-      "synergy": 50.7,
+      "synergy": 50.4,
       "Ti": 5.5,
       "Cd": 3.8,
       "Fp": 4.47,
@@ -1271,6 +1519,9 @@
       "style_icon": "💨",
       "workload_rotation_rating": "High Fatigue Risk",
       "season_minutes_status": "~1,900 mins/yr (French Pro D2)",
+      "spine_dominant_club": "Perpignan",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Francisco Fernandes",
@@ -1284,7 +1535,7 @@
           "position": "Hooker",
           "club": "Perpignan",
           "caps": 33,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Diogo Hasse Ferreira",
@@ -1334,7 +1585,7 @@
       "rank": 17,
       "wr_rank": 21,
       "team": "Romania",
-      "synergy": 48.8,
+      "synergy": 48.6,
       "Ti": 4.2,
       "Cd": 4.5,
       "Fp": 4.47,
@@ -1357,6 +1608,9 @@
       "style_icon": "🛡️",
       "workload_rotation_rating": "High Fatigue Risk",
       "season_minutes_status": "~1,900 mins/yr (Domestic)",
+      "spine_dominant_club": "Dinamo",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Alexandru Savin",
@@ -1370,7 +1624,7 @@
           "position": "Hooker",
           "club": "Dinamo",
           "caps": 32,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Alexandru Gordas",
@@ -1420,7 +1674,7 @@
       "rank": 18,
       "wr_rank": 17,
       "team": "Spain",
-      "synergy": 43.7,
+      "synergy": 43.6,
       "Ti": 4.5,
       "Cd": 4,
       "Fp": 3.8,
@@ -1443,6 +1697,9 @@
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk",
       "season_minutes_status": "~1,700 mins/yr (Local Load)",
+      "spine_dominant_club": "Biarritz",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Thierry Futeu",
@@ -1456,7 +1713,7 @@
           "position": "Hooker",
           "club": "Biarritz",
           "caps": 32,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Jon Zabala",
@@ -1529,6 +1786,9 @@
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk",
       "season_minutes_status": "~1,600 mins/yr (MLR Load)",
+      "spine_dominant_club": "New England",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Liam Murray",
@@ -1542,7 +1802,7 @@
           "position": "Hooker",
           "club": "New England",
           "caps": 20,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Cole Keith",
@@ -1592,7 +1852,7 @@
       "rank": 20,
       "wr_rank": 14,
       "team": "USA",
-      "synergy": 40.5,
+      "synergy": 40.4,
       "Ti": 5.5,
       "Cd": 3.5,
       "Fp": 2,
@@ -1615,6 +1875,9 @@
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (MLR Workload)",
       "season_minutes_status": "~1,500 mins/yr (MLR Season)",
+      "spine_dominant_club": "Chicago Hounds",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Jack Iscaro",
@@ -1628,7 +1891,7 @@
           "position": "Hooker",
           "club": "Chicago Hounds",
           "caps": 25,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Paul Mullen",
@@ -1701,6 +1964,9 @@
       "style_icon": "💥",
       "workload_rotation_rating": "Extreme Fatigue Risk (Amateur/Pro Mix)",
       "season_minutes_status": "~1,800 mins/yr (Amateur Load)",
+      "spine_dominant_club": "Selknam",
+      "spine_match_count": 1,
+      "spine_score": 2,
       "players": [
         {
           "name": "Javier Carrasco",
@@ -1714,7 +1980,7 @@
           "position": "Hooker",
           "club": "Selknam",
           "caps": 22,
-          "role": "Starter"
+          "role": "Starter (Spine)"
         },
         {
           "name": "Matías Dittus",

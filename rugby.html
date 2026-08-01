@@ -289,12 +289,14 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
           <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:#4b7a5c;margin-bottom:0.6rem;">Data &amp; Benchmarks</div>
           <div class="data-box">
             🌍 <strong style="color:#86efac;">World Rugby Rankings API</strong> — official WR ranking points &amp; positions<br>
+            🧠 <strong style="color:#86efac;">Central Spine Cohesion</strong> — club concentration of Hooker, No.8, Scrumhalf, Flyhalf, and Fullback (2, 8, 9, 10, 15)<br>
             🏋️ <strong style="color:#86efac;">Squad Depth Index</strong> — 23-man matchday bench tier &amp; drop-off evaluation<br>
             📈 <strong style="color:#86efac;">Top 10 Win % Benchmark</strong> — test match win percentage vs Top 10 nations (last 24 months)<br>
             🎮 <strong style="color:#86efac;">Tactical Style Taxonomy</strong> — 5 distinct style categories with execution clarity rating
           </div>
           <div class="ref-box">
             📚 GAIN LINE Analytics (2023) — cohesion accounts for ~40% of international rugby performance<br>
+            📚 Joan Ryan (2020) — "Intangibles: Unlocking the Science and Soul of Team Chemistry" (trust loops, neuro-bonding, and playmaking spine chemistry)<br>
             📚 McCarthy &amp; Collins (2022) — shared experience takes 2.8 seasons to peak at elite level<br>
             📚 World Rugby Nations Championship 2026 — squad selection &amp; 23-man matchday tracking
           </div>
@@ -512,6 +514,29 @@ function openDetail(idx) {
       <div class="fp-row">
         <span class="fp-pos">Avg Starter Test Caps</span>
         <span class="fp-club">${t.avg_starter_caps} caps avg per starter</span>
+      </div>
+    </div>
+
+    <!-- CENTRAL PLAYMAKING SPINE COHESION CARD -->
+    <div class="cohesion-card" style="border-color:rgba(56,189,248,0.22);background:linear-gradient(135deg,rgba(56,189,248,0.03) 0%,rgba(6,78,59,0.02) 100%);">
+      <div class="cohesion-title" style="color:#38bdf8;">🧠 Central Playmaking Spine (2, 8, 9, 10, 15)</div>
+      <div style="font-size:0.72rem;color:#4b7a5c;line-height:1.5;margin-bottom:0.75rem;">
+        Citing Joan Ryan's <em>Intangibles</em> (2020) team chemistry framework: trust loops and shared neurological bonding are unlocked by club-matching decision axles.
+      </div>
+      <div class="fp-row">
+        <span class="fp-pos">Dominant Spine Franchise</span>
+        <span class="fp-club" style="color:#f1f5f9;font-weight:700;">
+          ${t.spine_dominant_club || 'Scattered'} (${t.spine_match_count}/5 matched)
+        </span>
+      </div>
+      <div class="fp-row">
+        <span class="fp-pos">Spine Cohesion Score</span>
+        <span class="fp-club" style="color:#fbbf24;font-weight:800;">
+          ${t.spine_score.toFixed(1)} / 10
+        </span>
+      </div>
+      <div style="height:6px;background:rgba(255,255,255,0.05);border-radius:999px;width:100%;margin-top:0.4rem;overflow:hidden;">
+        <div style="height:6px;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#fbbf24);width:${t.spine_score * 10}%;"></div>
       </div>
     </div>
 
