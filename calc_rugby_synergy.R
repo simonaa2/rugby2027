@@ -264,9 +264,29 @@ cat("\n=== FULL SYNERGY STANDINGS v3.0 ===\n")
 print(as.data.frame(all_data %>%
   select(rank, team, wr_rank, synergy, Ti, Cd, Fp, Pc, Ts, Sd, win_pct_top10, profile)))
 
+# Load player database
+player_db <- read.csv(file.path(DATA_DIR, "player_database.csv"), stringsAsFactors = FALSE)
+
 # ── 6. EXPORT JSON ───────────────────────────────────────────
 teams_list <- lapply(seq_len(nrow(all_data)), function(i) {
   r <- all_data[i, ]
+  
+  # Filter players for this team
+  team_players <- player_db %>% filter(team == r$team)
+  players_list <- if(nrow(team_players) > 0) {
+    lapply(seq_len(nrow(team_players)), function(j) {
+      list(
+        name     = team_players$player_name[j],
+        position = team_players$position[j],
+        club     = team_players$club[j],
+        caps     = as.integer(team_players$caps[j]),
+        role     = team_players$role[j]
+      )
+    })
+  } else {
+    list()
+  }
+
   list(
     rank               = as.integer(r$rank),
     wr_rank            = as.integer(r$wr_rank),
@@ -293,7 +313,8 @@ teams_list <- lapply(seq_len(nrow(all_data)), function(i) {
     style_category     = r$style_category,
     style_icon         = r$style_icon,
     workload_rotation_rating = r$workload_rotation_rating,
-    season_minutes_status    = r$season_minutes_status
+    season_minutes_status    = r$season_minutes_status,
+    players            = players_list
   )
 })
 

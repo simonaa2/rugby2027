@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T08:44:05Z",
+  "generated_at": "2026-08-01T09:01:58Z",
   "model_version": "rugby_v3.0",
   "tournament": "RWC 2027 Australia",
   "total_teams": 21,
@@ -31,7 +31,72 @@
       "style_category": "Set Piece & Lineout Drive",
       "style_icon": "🎯",
       "workload_rotation_rating": "Controlled (IRFU Central Minutes Cap)",
-      "season_minutes_status": "~1,350 mins/yr (Strict IRFU Cap)"
+      "season_minutes_status": "~1,350 mins/yr (Strict IRFU Cap)",
+      "players": [
+        {
+          "name": "Andrew Porter",
+          "position": "Loosehead Prop",
+          "club": "Leinster",
+          "caps": 62,
+          "role": "Starter"
+        },
+        {
+          "name": "Dan Sheehan",
+          "position": "Hooker",
+          "club": "Leinster",
+          "caps": 26,
+          "role": "Starter"
+        },
+        {
+          "name": "Tadhg Furlong",
+          "position": "Tighthead Prop",
+          "club": "Leinster",
+          "caps": 72,
+          "role": "Starter"
+        },
+        {
+          "name": "Tadhg Beirne",
+          "position": "Lock",
+          "club": "Munster",
+          "caps": 46,
+          "role": "Starter"
+        },
+        {
+          "name": "Joe McCarthy",
+          "position": "Lock",
+          "club": "Leinster",
+          "caps": 12,
+          "role": "Starter"
+        },
+        {
+          "name": "Ronan Kelleher",
+          "position": "Hooker",
+          "club": "Leinster",
+          "caps": 28,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Finlay Bealham",
+          "position": "Tighthead Prop",
+          "club": "Connacht",
+          "caps": 36,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Cian Healy",
+          "position": "Loosehead Prop",
+          "club": "Leinster",
+          "caps": 129,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "James Ryan",
+          "position": "Lock",
+          "club": "Leinster",
+          "caps": 64,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 2,
@@ -59,7 +124,72 @@
       "style_category": "Expansive & Unpredictable",
       "style_icon": "🔥",
       "workload_rotation_rating": "Heavy Load (Top 14 Overload Risk)",
-      "season_minutes_status": "~2,200 mins/yr (Top 14 Heavy)"
+      "season_minutes_status": "~2,200 mins/yr (Top 14 Heavy)",
+      "players": [
+        {
+          "name": "Cyril Baille",
+          "position": "Loosehead Prop",
+          "club": "Toulouse",
+          "caps": 47,
+          "role": "Starter"
+        },
+        {
+          "name": "Peato Mauvaka",
+          "position": "Hooker",
+          "club": "Toulouse",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Uini Atonio",
+          "position": "Tighthead Prop",
+          "club": "La Rochelle",
+          "caps": 60,
+          "role": "Starter"
+        },
+        {
+          "name": "Thibaud Flament",
+          "position": "Lock",
+          "club": "Toulouse",
+          "caps": 26,
+          "role": "Starter"
+        },
+        {
+          "name": "Emmanuel Meafou",
+          "position": "Lock",
+          "club": "Toulouse",
+          "caps": 8,
+          "role": "Starter"
+        },
+        {
+          "name": "Julien Marchand",
+          "position": "Hooker",
+          "club": "Toulouse",
+          "caps": 35,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Dorian Aldegheri",
+          "position": "Tighthead Prop",
+          "club": "Toulouse",
+          "caps": 17,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Reda Wardi",
+          "position": "Loosehead Prop",
+          "club": "La Rochelle",
+          "caps": 14,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Paul Willemse",
+          "position": "Lock",
+          "club": "Montpellier",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 3,
@@ -87,7 +217,86 @@
       "style_category": "Set Piece & Bomb Squad",
       "style_icon": "🛡️",
       "workload_rotation_rating": "Elite (23-man Squad Rotation)",
-      "season_minutes_status": "~1,400 mins/yr (Centrally Managed)"
+      "season_minutes_status": "~1,400 mins/yr (Centrally Managed)",
+      "players": [
+        {
+          "name": "Ox Nché",
+          "position": "Loosehead Prop",
+          "club": "Sharks",
+          "caps": 35,
+          "role": "Starter"
+        },
+        {
+          "name": "Bongi Mbonambi",
+          "position": "Hooker",
+          "club": "Sharks",
+          "caps": 68,
+          "role": "Starter"
+        },
+        {
+          "name": "Frans Malherbe",
+          "position": "Tighthead Prop",
+          "club": "Stormers",
+          "caps": 69,
+          "role": "Starter"
+        },
+        {
+          "name": "Eben Etzebeth",
+          "position": "Lock",
+          "club": "Sharks",
+          "caps": 120,
+          "role": "Starter"
+        },
+        {
+          "name": "RG Snyman",
+          "position": "Lock",
+          "club": "Leinster",
+          "caps": 34,
+          "role": "Starter"
+        },
+        {
+          "name": "Malcolm Marx",
+          "position": "Hooker",
+          "club": "Spears (Japan)",
+          "caps": 64,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Vincent Koch",
+          "position": "Tighthead Prop",
+          "club": "Sharks",
+          "caps": 49,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Steven Kitshoff",
+          "position": "Loosehead Prop",
+          "club": "Stormers",
+          "caps": 85,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Gerhard Steenekamp",
+          "position": "Loosehead Prop",
+          "club": "Bulls",
+          "caps": 10,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Thomas du Toit",
+          "position": "Tighthead Prop",
+          "club": "Bath",
+          "caps": 20,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Salmaan Moerat",
+          "position": "Lock",
+          "club": "Stormers",
+          "caps": 15,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 4,
@@ -115,7 +324,8 @@
       "style_category": "Fast Attacking & Loose-Ball",
       "style_icon": "💨",
       "workload_rotation_rating": "High Starter Dependency",
-      "season_minutes_status": "~1,900 mins/yr (High Overuse)"
+      "season_minutes_status": "~1,900 mins/yr (High Overuse)",
+      "players": []
     },
     {
       "rank": 5,
@@ -143,7 +353,65 @@
       "style_category": "High-Tempo & Counter",
       "style_icon": "💨",
       "workload_rotation_rating": "Moderate (Benetton Load Managed)",
-      "season_minutes_status": "~1,700 mins/yr (Benetton Core)"
+      "season_minutes_status": "~1,700 mins/yr (Benetton Core)",
+      "players": [
+        {
+          "name": "Danilo Fischetti",
+          "position": "Loosehead Prop",
+          "club": "Zebre",
+          "caps": 41,
+          "role": "Starter"
+        },
+        {
+          "name": "Gianmarco Lucchesi",
+          "position": "Hooker",
+          "club": "Benetton",
+          "caps": 22,
+          "role": "Starter"
+        },
+        {
+          "name": "Simone Ferrari",
+          "position": "Tighthead Prop",
+          "club": "Benetton",
+          "caps": 50,
+          "role": "Starter"
+        },
+        {
+          "name": "Federico Ruzza",
+          "position": "Lock",
+          "club": "Benetton",
+          "caps": 54,
+          "role": "Starter"
+        },
+        {
+          "name": "Niccolò Cannone",
+          "position": "Lock",
+          "club": "Benetton",
+          "caps": 38,
+          "role": "Starter"
+        },
+        {
+          "name": "Giacomo Nicotera",
+          "position": "Hooker",
+          "club": "Benetton",
+          "caps": 18,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Pietro Ceccarelli",
+          "position": "Tighthead Prop",
+          "club": "Benetton",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Andrea Zambonin",
+          "position": "Lock",
+          "club": "Benetton",
+          "caps": 6,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 6,
@@ -171,7 +439,72 @@
       "style_category": "Developing Direct Game",
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk (Thin Squad)",
-      "season_minutes_status": "~2,000 mins/yr (Overuse Risk)"
+      "season_minutes_status": "~2,000 mins/yr (Overuse Risk)",
+      "players": [
+        {
+          "name": "Gareth Thomas",
+          "position": "Loosehead Prop",
+          "club": "Ospreys",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Dewi Lake",
+          "position": "Hooker",
+          "club": "Ospreys",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Tomas Francis",
+          "position": "Tighthead Prop",
+          "club": "Provence",
+          "caps": 76,
+          "role": "Starter"
+        },
+        {
+          "name": "Dafydd Jenkins",
+          "position": "Lock",
+          "club": "Exeter",
+          "caps": 17,
+          "role": "Starter"
+        },
+        {
+          "name": "Adam Beard",
+          "position": "Lock",
+          "club": "Ospreys",
+          "caps": 52,
+          "role": "Starter"
+        },
+        {
+          "name": "Ryan Elias",
+          "position": "Hooker",
+          "club": "Scarlets",
+          "caps": 41,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Keiron Assiratti",
+          "position": "Tighthead Prop",
+          "club": "Cardiff",
+          "caps": 6,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Corey Domachowski",
+          "position": "Loosehead Prop",
+          "club": "Cardiff",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Will Rowlands",
+          "position": "Lock",
+          "club": "Racing 92",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 7,
@@ -199,7 +532,72 @@
       "style_category": "Running & Width",
       "style_icon": "⚡",
       "workload_rotation_rating": "High (Super Rugby Load Managed)",
-      "season_minutes_status": "~1,600 mins/yr (SR Managed)"
+      "season_minutes_status": "~1,600 mins/yr (SR Managed)",
+      "players": [
+        {
+          "name": "Ethan de Groot",
+          "position": "Loosehead Prop",
+          "club": "Highlanders",
+          "caps": 25,
+          "role": "Starter"
+        },
+        {
+          "name": "Codie Taylor",
+          "position": "Hooker",
+          "club": "Crusaders",
+          "caps": 85,
+          "role": "Starter"
+        },
+        {
+          "name": "Tyrel Lomax",
+          "position": "Tighthead Prop",
+          "club": "Hurricanes",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Scott Barrett",
+          "position": "Lock",
+          "club": "Crusaders",
+          "caps": 69,
+          "role": "Starter"
+        },
+        {
+          "name": "Patrick Tuipulotu",
+          "position": "Lock",
+          "club": "Blues",
+          "caps": 43,
+          "role": "Starter"
+        },
+        {
+          "name": "Asafo Aumua",
+          "position": "Hooker",
+          "club": "Hurricanes",
+          "caps": 15,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Fletcher Newell",
+          "position": "Tighthead Prop",
+          "club": "Crusaders",
+          "caps": 14,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Tupou Vaa'i",
+          "position": "Lock",
+          "club": "Chiefs",
+          "caps": 25,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Tamaiti Williams",
+          "position": "Loosehead Prop",
+          "club": "Crusaders",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 8,
@@ -227,7 +625,72 @@
       "style_category": "Kicking & Field Position",
       "style_icon": "👟",
       "workload_rotation_rating": "Moderate (Premiership 24-game Cap)",
-      "season_minutes_status": "~1,800 mins/yr (Prem Cap)"
+      "season_minutes_status": "~1,800 mins/yr (Prem Cap)",
+      "players": [
+        {
+          "name": "Ellis Genge",
+          "position": "Loosehead Prop",
+          "club": "Bristol",
+          "caps": 58,
+          "role": "Starter"
+        },
+        {
+          "name": "Jamie George",
+          "position": "Hooker",
+          "club": "Saracens",
+          "caps": 88,
+          "role": "Starter"
+        },
+        {
+          "name": "Dan Cole",
+          "position": "Tighthead Prop",
+          "club": "Leicester",
+          "caps": 112,
+          "role": "Starter"
+        },
+        {
+          "name": "Maro Itoje",
+          "position": "Lock",
+          "club": "Saracens",
+          "caps": 76,
+          "role": "Starter"
+        },
+        {
+          "name": "Ollie Chessum",
+          "position": "Lock",
+          "club": "Leicester",
+          "caps": 22,
+          "role": "Starter"
+        },
+        {
+          "name": "Theo Dan",
+          "position": "Hooker",
+          "club": "Saracens",
+          "caps": 12,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Joe Marler",
+          "position": "Loosehead Prop",
+          "club": "Harlequins",
+          "caps": 93,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Will Stuart",
+          "position": "Tighthead Prop",
+          "club": "Bath",
+          "caps": 33,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "George Martin",
+          "position": "Lock",
+          "club": "Leicester",
+          "caps": 10,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 9,
@@ -255,7 +718,65 @@
       "style_category": "High-Tempo & Passing",
       "style_icon": "⚡",
       "workload_rotation_rating": "Controlled (League One Moderate Games)",
-      "season_minutes_status": "~1,200 mins/yr (JRLO Short Season)"
+      "season_minutes_status": "~1,200 mins/yr (JRLO Short Season)",
+      "players": [
+        {
+          "name": "Keita Inagaki",
+          "position": "Loosehead Prop",
+          "club": "Wild Knights",
+          "caps": 49,
+          "role": "Starter"
+        },
+        {
+          "name": "Atsushi Sakate",
+          "position": "Hooker",
+          "club": "Wild Knights",
+          "caps": 37,
+          "role": "Starter"
+        },
+        {
+          "name": "Jiwon Gu",
+          "position": "Tighthead Prop",
+          "club": "Kobe Steel",
+          "caps": 26,
+          "role": "Starter"
+        },
+        {
+          "name": "Warner Dearns",
+          "position": "Lock",
+          "club": "Toshiba",
+          "caps": 18,
+          "role": "Starter"
+        },
+        {
+          "name": "Jack Cornelsen",
+          "position": "Lock",
+          "club": "Wild Knights",
+          "caps": 19,
+          "role": "Starter"
+        },
+        {
+          "name": "Shota Horie",
+          "position": "Hooker",
+          "club": "Wild Knights",
+          "caps": 76,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Asaeli Ai Valu",
+          "position": "Tighthead Prop",
+          "club": "Wild Knights",
+          "caps": 28,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Amanaki Saumaki",
+          "position": "Lock",
+          "club": "Canon",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 10,
@@ -283,7 +804,65 @@
       "style_category": "Direct Pacific Power",
       "style_icon": "💥",
       "workload_rotation_rating": "High Fatigue Risk (Veteran Load)",
-      "season_minutes_status": "~1,800 mins/yr (Veteran Overuse)"
+      "season_minutes_status": "~1,800 mins/yr (Veteran Overuse)",
+      "players": [
+        {
+          "name": "Siegfried Fisi'ihoi",
+          "position": "Loosehead Prop",
+          "club": "Pau",
+          "caps": 22,
+          "role": "Starter"
+        },
+        {
+          "name": "Paula Ngauamo",
+          "position": "Hooker",
+          "club": "Castres",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Ben Tameifuna",
+          "position": "Tighthead Prop",
+          "club": "Bordeaux",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Leva Fifita",
+          "position": "Lock",
+          "club": "Ospreys",
+          "caps": 31,
+          "role": "Starter"
+        },
+        {
+          "name": "Sam Lousi",
+          "position": "Lock",
+          "club": "Scarlets",
+          "caps": 20,
+          "role": "Starter"
+        },
+        {
+          "name": "Siua Maile",
+          "position": "Hooker",
+          "club": "Benetton",
+          "caps": 15,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Tau Koloamatangi",
+          "position": "Prop",
+          "club": "Moana Pasifika",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Steve Mafi",
+          "position": "Lock",
+          "club": "Ospreys",
+          "caps": 41,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 11,
@@ -311,7 +890,72 @@
       "style_category": "Kicking & Counter-Attack",
       "style_icon": "👟",
       "workload_rotation_rating": "Moderate (RA Load Management)",
-      "season_minutes_status": "~1,650 mins/yr (RA Managed)"
+      "season_minutes_status": "~1,650 mins/yr (RA Managed)",
+      "players": [
+        {
+          "name": "Angus Bell",
+          "position": "Loosehead Prop",
+          "club": "Waratahs",
+          "caps": 28,
+          "role": "Starter"
+        },
+        {
+          "name": "Matt Faessler",
+          "position": "Hooker",
+          "club": "Reds",
+          "caps": 13,
+          "role": "Starter"
+        },
+        {
+          "name": "Allan Alaalatoa",
+          "position": "Tighthead Prop",
+          "club": "Brumbies",
+          "caps": 67,
+          "role": "Starter"
+        },
+        {
+          "name": "Nick Frost",
+          "position": "Lock",
+          "club": "Brumbies",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Will Skelton",
+          "position": "Lock",
+          "club": "La Rochelle",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Dave Porecki",
+          "position": "Hooker",
+          "club": "Waratahs",
+          "caps": 19,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "James Slipper",
+          "position": "Loosehead Prop",
+          "club": "Brumbies",
+          "caps": 134,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Taniela Tupou",
+          "position": "Tighthead Prop",
+          "club": "Reds",
+          "caps": 51,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Lukhan Salakaia-Loto",
+          "position": "Lock",
+          "club": "Reds",
+          "caps": 32,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 12,
@@ -339,7 +983,65 @@
       "style_category": "Unstructured Running Rugby",
       "style_icon": "🏃",
       "workload_rotation_rating": "High Fatigue Risk (Global Travel)",
-      "season_minutes_status": "~2,000 mins/yr (Travel Heavy)"
+      "season_minutes_status": "~2,000 mins/yr (Travel Heavy)",
+      "players": [
+        {
+          "name": "Eroni Mawi",
+          "position": "Loosehead Prop",
+          "club": "Saracens",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Te Vita Ikanivere",
+          "position": "Hooker",
+          "club": "Drua",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Mesake Doge",
+          "position": "Tighthead Prop",
+          "club": "Drua",
+          "caps": 10,
+          "role": "Starter"
+        },
+        {
+          "name": "Isoa Nasilasila",
+          "position": "Lock",
+          "club": "Drua",
+          "caps": 12,
+          "role": "Starter"
+        },
+        {
+          "name": "Temo Mayanavanua",
+          "position": "Lock",
+          "club": "Northampton",
+          "caps": 18,
+          "role": "Starter"
+        },
+        {
+          "name": "Sam Matavesi",
+          "position": "Hooker",
+          "club": "Northampton",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Peni Ravai",
+          "position": "Prop",
+          "club": "Reds",
+          "caps": 42,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Albert Tuisue",
+          "position": "Lock",
+          "club": "Gloucester",
+          "caps": 25,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 13,
@@ -367,7 +1069,65 @@
       "style_category": "Set Piece Warriors",
       "style_icon": "🛡️",
       "workload_rotation_rating": "High Starter Dependency",
-      "season_minutes_status": "~2,100 mins/yr (Pro D2 Heavy)"
+      "season_minutes_status": "~2,100 mins/yr (Pro D2 Heavy)",
+      "players": [
+        {
+          "name": "Nika Abuladze",
+          "position": "Loosehead Prop",
+          "club": "Exeter",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Shalva Mamukashvili",
+          "position": "Hooker",
+          "club": "Tbilisi",
+          "caps": 103,
+          "role": "Starter"
+        },
+        {
+          "name": "Beka Gigashvili",
+          "position": "Tighthead Prop",
+          "club": "Toulon",
+          "caps": 38,
+          "role": "Starter"
+        },
+        {
+          "name": "Konstantine Mikautadze",
+          "position": "Lock",
+          "club": "Bayonne",
+          "caps": 86,
+          "role": "Starter"
+        },
+        {
+          "name": "Lado Chachanidze",
+          "position": "Lock",
+          "club": "Nevers",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Luka Nioradze",
+          "position": "Hooker",
+          "club": "Aurillac",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Irakli Aptsiauri",
+          "position": "Tighthead Prop",
+          "club": "Grenoble",
+          "caps": 6,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Nodar Cheishvili",
+          "position": "Lock",
+          "club": "Black Lion",
+          "caps": 48,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 14,
@@ -395,7 +1155,8 @@
       "style_category": "Physicality & Breakdown",
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (European Pro Rotation)",
-      "season_minutes_status": "~1,850 mins/yr (Euro Pro)"
+      "season_minutes_status": "~1,850 mins/yr (Euro Pro)",
+      "players": []
     },
     {
       "rank": 15,
@@ -423,7 +1184,65 @@
       "style_category": "Physical Breakdown Game",
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (Peñarol Centrally Managed)",
-      "season_minutes_status": "~1,400 mins/yr (SLAR Managed)"
+      "season_minutes_status": "~1,400 mins/yr (SLAR Managed)",
+      "players": [
+        {
+          "name": "Mateo Sanguinetti",
+          "position": "Loosehead Prop",
+          "club": "Peñarol",
+          "caps": 82,
+          "role": "Starter"
+        },
+        {
+          "name": "Germán Kessler",
+          "position": "Hooker",
+          "club": "Peñarol",
+          "caps": 65,
+          "role": "Starter"
+        },
+        {
+          "name": "Ignacio Péculo",
+          "position": "Tighthead Prop",
+          "club": "Peñarol",
+          "caps": 18,
+          "role": "Starter"
+        },
+        {
+          "name": "Manuel Leindekar",
+          "position": "Lock",
+          "club": "Bayonne",
+          "caps": 28,
+          "role": "Starter"
+        },
+        {
+          "name": "Felipe Aliaga",
+          "position": "Lock",
+          "club": "Peñarol",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Guillermo Pujadas",
+          "position": "Hooker",
+          "club": "Peñarol",
+          "caps": 26,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Reinaldo Piussi",
+          "position": "Tighthead Prop",
+          "club": "Peñarol",
+          "caps": 10,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Diego Magno",
+          "position": "Lock",
+          "club": "Peñarol",
+          "caps": 105,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 16,
@@ -451,7 +1270,65 @@
       "style_category": "Fast & Offloading",
       "style_icon": "💨",
       "workload_rotation_rating": "High Fatigue Risk",
-      "season_minutes_status": "~1,900 mins/yr (French Pro D2)"
+      "season_minutes_status": "~1,900 mins/yr (French Pro D2)",
+      "players": [
+        {
+          "name": "Francisco Fernandes",
+          "position": "Loosehead Prop",
+          "club": "Beziers",
+          "caps": 45,
+          "role": "Starter"
+        },
+        {
+          "name": "Mike Tadjer",
+          "position": "Hooker",
+          "club": "Perpignan",
+          "caps": 33,
+          "role": "Starter"
+        },
+        {
+          "name": "Diogo Hasse Ferreira",
+          "position": "Tighthead Prop",
+          "club": "Dax",
+          "caps": 38,
+          "role": "Starter"
+        },
+        {
+          "name": "Steevy Cerqueira",
+          "position": "Lock",
+          "club": "Chambery",
+          "caps": 12,
+          "role": "Starter"
+        },
+        {
+          "name": "José Madeira",
+          "position": "Lock",
+          "club": "Grenoble",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Luka Begic",
+          "position": "Hooker",
+          "club": "Chambery",
+          "caps": 6,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Anthony Alves",
+          "position": "Tighthead Prop",
+          "club": "Mont-de-Marsan",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Martim Belo",
+          "position": "Lock",
+          "club": "Cascais",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 17,
@@ -479,7 +1356,65 @@
       "style_category": "Set Piece & Maul",
       "style_icon": "🛡️",
       "workload_rotation_rating": "High Fatigue Risk",
-      "season_minutes_status": "~1,900 mins/yr (Domestic)"
+      "season_minutes_status": "~1,900 mins/yr (Domestic)",
+      "players": [
+        {
+          "name": "Alexandru Savin",
+          "position": "Loosehead Prop",
+          "club": "Steaua",
+          "caps": 25,
+          "role": "Starter"
+        },
+        {
+          "name": "Ovidiu Cojocaru",
+          "position": "Hooker",
+          "club": "Dinamo",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Alexandru Gordas",
+          "position": "Tighthead Prop",
+          "club": "Dinamo",
+          "caps": 35,
+          "role": "Starter"
+        },
+        {
+          "name": "Adrian Motoc",
+          "position": "Lock",
+          "club": "Biarritz",
+          "caps": 28,
+          "role": "Starter"
+        },
+        {
+          "name": "Stefan Iancu",
+          "position": "Lock",
+          "club": "Steaua",
+          "caps": 10,
+          "role": "Starter"
+        },
+        {
+          "name": "Florin Bardasu",
+          "position": "Hooker",
+          "club": "Steaua",
+          "caps": 12,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Gheorghe Gajion",
+          "position": "Tighthead Prop",
+          "club": "Mont-de-Marsan",
+          "caps": 24,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Marius Iftimiciuc",
+          "position": "Lock",
+          "club": "Carcassonne",
+          "caps": 15,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 18,
@@ -507,7 +1442,65 @@
       "style_category": "Developing Identity",
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk",
-      "season_minutes_status": "~1,700 mins/yr (Local Load)"
+      "season_minutes_status": "~1,700 mins/yr (Local Load)",
+      "players": [
+        {
+          "name": "Thierry Futeu",
+          "position": "Loosehead Prop",
+          "club": "Chartres",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Marco Pinto",
+          "position": "Hooker",
+          "club": "Biarritz",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Jon Zabala",
+          "position": "Tighthead Prop",
+          "club": "Béziers",
+          "caps": 28,
+          "role": "Starter"
+        },
+        {
+          "name": "Manuel Mora",
+          "position": "Lock",
+          "club": "VRAC",
+          "caps": 41,
+          "role": "Starter"
+        },
+        {
+          "name": "Alejandro Suárez",
+          "position": "Lock",
+          "club": "El Salvador",
+          "caps": 15,
+          "role": "Starter"
+        },
+        {
+          "name": "Vicente Del Hoyo",
+          "position": "Hooker",
+          "club": "El Salvador",
+          "caps": 18,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Joel Merkler",
+          "position": "Tighthead Prop",
+          "club": "Toulouse",
+          "caps": 12,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Lucas Guillaume",
+          "position": "Lock",
+          "club": "Albi",
+          "caps": 25,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 19,
@@ -535,7 +1528,65 @@
       "style_category": "Developing Identity",
       "style_icon": "🌱",
       "workload_rotation_rating": "High Fatigue Risk",
-      "season_minutes_status": "~1,600 mins/yr (MLR Load)"
+      "season_minutes_status": "~1,600 mins/yr (MLR Load)",
+      "players": [
+        {
+          "name": "Liam Murray",
+          "position": "Loosehead Prop",
+          "club": "Dallas Jackals",
+          "caps": 10,
+          "role": "Starter"
+        },
+        {
+          "name": "Andrew Quattrin",
+          "position": "Hooker",
+          "club": "New England",
+          "caps": 20,
+          "role": "Starter"
+        },
+        {
+          "name": "Cole Keith",
+          "position": "Tighthead Prop",
+          "club": "New England",
+          "caps": 28,
+          "role": "Starter"
+        },
+        {
+          "name": "Conor Keys",
+          "position": "Lock",
+          "club": "New England",
+          "caps": 32,
+          "role": "Starter"
+        },
+        {
+          "name": "Iosefo Saqanere",
+          "position": "Lock",
+          "club": "Houston",
+          "caps": 8,
+          "role": "Starter"
+        },
+        {
+          "name": "Foster Dewitt",
+          "position": "Hooker",
+          "club": "New England",
+          "caps": 5,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Conor Young",
+          "position": "Tighthead Prop",
+          "club": "New England",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Kyle Baillie",
+          "position": "Lock",
+          "club": "New England",
+          "caps": 35,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 20,
@@ -563,7 +1614,65 @@
       "style_category": "Direct MLR Physicality",
       "style_icon": "💥",
       "workload_rotation_rating": "Moderate (MLR Workload)",
-      "season_minutes_status": "~1,500 mins/yr (MLR Season)"
+      "season_minutes_status": "~1,500 mins/yr (MLR Season)",
+      "players": [
+        {
+          "name": "Jack Iscaro",
+          "position": "Loosehead Prop",
+          "club": "Old Glory DC",
+          "caps": 8,
+          "role": "Starter"
+        },
+        {
+          "name": "Dylan Fawsitt",
+          "position": "Hooker",
+          "club": "Chicago Hounds",
+          "caps": 25,
+          "role": "Starter"
+        },
+        {
+          "name": "Paul Mullen",
+          "position": "Tighthead Prop",
+          "club": "Utah Warriors",
+          "caps": 30,
+          "role": "Starter"
+        },
+        {
+          "name": "Greg Peterson",
+          "position": "Lock",
+          "club": "San Diego Legion",
+          "caps": 42,
+          "role": "Starter"
+        },
+        {
+          "name": "Siaosi Mahoni",
+          "position": "Lock",
+          "club": "Houston SaberCats",
+          "caps": 10,
+          "role": "Starter"
+        },
+        {
+          "name": "Kapeli Pifeleti",
+          "position": "Hooker",
+          "club": "Saracens",
+          "caps": 10,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "David Ainu'u",
+          "position": "Prop",
+          "club": "Toulouse",
+          "caps": 22,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Nate Brakeley",
+          "position": "Lock",
+          "club": "New York",
+          "caps": 31,
+          "role": "Bench / Rotation"
+        }
+      ]
     },
     {
       "rank": 21,
@@ -591,7 +1700,65 @@
       "style_category": "URBA Direct Physicality",
       "style_icon": "💥",
       "workload_rotation_rating": "Extreme Fatigue Risk (Amateur/Pro Mix)",
-      "season_minutes_status": "~1,800 mins/yr (Amateur Load)"
+      "season_minutes_status": "~1,800 mins/yr (Amateur Load)",
+      "players": [
+        {
+          "name": "Javier Carrasco",
+          "position": "Loosehead Prop",
+          "club": "Selknam",
+          "caps": 18,
+          "role": "Starter"
+        },
+        {
+          "name": "Augusto Bohme",
+          "position": "Hooker",
+          "club": "Selknam",
+          "caps": 22,
+          "role": "Starter"
+        },
+        {
+          "name": "Matías Dittus",
+          "position": "Tighthead Prop",
+          "club": "Selknam",
+          "caps": 21,
+          "role": "Starter"
+        },
+        {
+          "name": "Clemente Saavedra",
+          "position": "Lock",
+          "club": "Selknam",
+          "caps": 20,
+          "role": "Starter"
+        },
+        {
+          "name": "Santiago Pedrero",
+          "position": "Lock",
+          "club": "Selknam",
+          "caps": 12,
+          "role": "Starter"
+        },
+        {
+          "name": "Diego Escobar",
+          "position": "Hooker",
+          "club": "Selknam",
+          "caps": 8,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Salvador Lues",
+          "position": "Loosehead Prop",
+          "club": "Selknam",
+          "caps": 10,
+          "role": "Bench / Rotation"
+        },
+        {
+          "name": "Pablo Huete",
+          "position": "Lock",
+          "club": "Selknam",
+          "caps": 32,
+          "role": "Bench / Rotation"
+        }
+      ]
     }
   ]
 }

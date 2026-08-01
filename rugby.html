@@ -540,8 +540,31 @@ function openDetail(idx) {
       </div>
     </div>
 
+    <!-- COLLAPSIBLE ROSTER -->
+    <div class="cohesion-card" style="background:rgba(251,191,36,0.03);border-color:rgba(251,191,36,0.15);margin-bottom:0.75rem;">
+      <button onclick="toggleRoster()" style="width:100%;background:none;border:none;color:#fbbf24;
+        font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:800;text-transform:uppercase;
+        letter-spacing:0.06em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+        <span>📋 Roster &amp; Redundancy Pool (${t.players ? t.players.length : 0} Players)</span>
+        <span id="rosterArrow" style="transition:transform 0.2s;">▼</span>
+      </button>
+      <div id="rosterBody" style="display:none;margin-top:0.75rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:0.6rem;">
+        ${t.players && t.players.length ? t.players.map(p => `
+          <div class="fp-row" style="font-size:0.78rem;">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;">
+              <span style="font-weight:700;color:#f1f5f9;">${p.name}</span>
+              <span style="font-size:0.65rem;color:#4b7a5c;">${p.position} · ${p.club}</span>
+            </div>
+            <span style="font-size:0.72rem;font-weight:800;color:${p.role === 'Starter' ? '#fbbf24' : '#cbd5e1'};">
+              ${p.caps} caps (${p.role})
+            </span>
+          </div>
+        `).join('') : '<div style="font-size:0.75rem;color:#4b7a5c;text-align:center;padding:0.5rem 0;">Roster pool data compiling...</div>'}
+      </div>
+    </div>
+
     <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);
-      border-radius:12px;padding:0.85rem 1rem;font-size:0.78rem;color:#4b7a5c;line-height:1.6;">
+      border-radius:12px;padding:0.85rem 1rem;font-size:0.78rem;color:#4b7a5c;line-height:1.6;margin-bottom:0.75rem;">
       <strong style="color:#86efac;">World Rugby Points:</strong> ${t.wr_pts ? t.wr_pts.toFixed(2) : '—'}<br>
       <strong style="color:#86efac;">Tactical Identity:</strong> ${t.style_icon} ${t.style_category} (Clarity Score: ${t.Ts}/10)
     </div>
@@ -563,6 +586,13 @@ document.getElementById('detailOverlay').addEventListener('click', function(e){
 function toggleMethod() {
   const body  = document.getElementById('methodBody');
   const arrow = document.getElementById('methodArrow');
+  const open  = body.style.display === 'none' || body.style.display === '';
+  body.style.display    = open ? 'block' : 'none';
+  arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+function toggleRoster() {
+  const body  = document.getElementById('rosterBody');
+  const arrow = document.getElementById('rosterArrow');
   const open  = body.style.display === 'none' || body.style.display === '';
   body.style.display    = open ? 'block' : 'none';
   arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';

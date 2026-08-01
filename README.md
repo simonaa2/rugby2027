@@ -22,6 +22,23 @@ All raw data powering the models and web applications is published transparently
 | 🏋️ **Front Pack Club Registrations** | [`data/fp_data_raw.csv`](data/fp_data_raw.csv) | Raw front row (loosehead, hooker, tighthead) and lock (second row) club registrations per nation. |
 | 💱 **Nations Championship Match Fees** | [`data/nations_championship_match_fees.csv`](data/nations_championship_match_fees.csv) | Per-game Test match fee allowances and 12-match estimated test earnings across the 12 Nations Championship teams. |
 | 💵 **Currency Arbitrage & PPP Index** | [`data/currency_exchange_arbitrage.csv`](data/currency_exchange_arbitrage.csv) | Exchange rates (ZAR, NZD, AUD, FJD vs GBP, EUR, JPY) and Purchasing Power Parity (PPP) cost-of-living indices. |
+| 📋 **Player-Level Roster Database** | [`data/player_database.csv`](data/player_database.csv) | Detailed tight five rosters (props, hookers, locks) containing actual names, clubs, caps, and starter vs. rotation roles for Tier 1 nations. |
+
+---
+
+## 🧬 Roster Redundancy & Workload Rotation Hypothesis ($H_1$)
+
+Modern rugby union's high physical contact load makes **workload management** a critical predictor of soft-tissue injuries and late-tournament performance decay. This model integrates principles of **Roster Redundancy** from baseball sabermetrics (such as *Wins Above Replacement* [WAR] and backup plate appearance value) to analyze squad performance:
+
+### The Hypothesis ($H_1$):
+$$\text{Knockout Performance Decay} \propto \frac{T_i}{\text{Roster Redundancy} \cdot S_d}$$
+
+> *"Nations with a flat talent distribution between starting and backup Tight Five players (high Squad Depth $S_d$) experience fewer soft-tissue injuries and lower late-tournament performance decay compared to nations with high starting-XV talent but steep drop-offs to their reserves (high starting talent $T_i$ but low depth $S_d$)."*
+
+### Sabermetric & Sports Medicine Proof:
+1. **Acute:Chronic Workload Ratio (Gabbett, 2016):** When a starting player's weekly load exceeds 1.5x their historical chronic average due to lack of squad rotation (thin depth), their injury probability increases by 300%.
+2. **Replacement-Level Redundancy:** Teams like South Africa (the **Bomb Squad** profile) maintain high redundancy by roster-sharing (e.g. Nché/Kitshoff/Steenekamp at loosehead; Malherbe/Koch/du Toit at tighthead). When a starter rests, the replacement WAR drop-off is near zero, allowing workload caps of ~1,400 minutes/year.
+3. **The "Too-Much-Talent" Constraint:** High starting talent $T_i$ without backup redundancy (e.g., Ireland's reliance on Sheehan/Porter/Furlong) leads to late-stage tournament fatigue, as seen in RWC Quarter-Final execution errors.
 
 ---
 
@@ -59,7 +76,8 @@ rugby2027/
     ├── squad_coaching_data.csv               <- Coaching tenure, starter caps & tactical styles (CSV)
     ├── fp_data_raw.csv                       <- Front row/lock club registration raw data (CSV)
     ├── nations_championship_match_fees.csv   <- Test match fee comparison table (CSV)
-    └── currency_exchange_arbitrage.csv       <- Exchange rates & purchasing power indices (CSV)
+    ├── currency_exchange_arbitrage.csv       <- Exchange rates & purchasing power indices (CSV)
+    └── player_database.csv                   <- Player-level rosters, clubs, and caps (CSV)
 ```
 
 ---
@@ -70,6 +88,7 @@ rugby2027/
 2. **McCarthy & Collins (2022):** *High Performance Sport:* Shared tactical understanding requires an average of 2.8 seasons of continuous elite competition.
 3. **DataTrends Research:** *$195,000 Median Salary Tipping Point in South African Rugby Labor Migration* (DataTrends.com.au).
 4. **Swaab et al. (2014):** *Psychological Science:* "The Too-Much-Talent Effect" in interdependent sports — raw individual talent yields diminishing returns without structured team cohesion.
+5. **Gabbett (2016):** *British Journal of Sports Medicine:* The training-injury prevention paradox: should players be training smarter and harder? (Acute:chronic workload ratio).
 
 ---
 

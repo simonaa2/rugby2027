@@ -1,0 +1,162 @@
+team,player_name,position,club,caps,role
+South Africa,Ox Nché,Loosehead Prop,Sharks,35,Starter
+South Africa,Bongi Mbonambi,Hooker,Sharks,68,Starter
+South Africa,Frans Malherbe,Tighthead Prop,Stormers,69,Starter
+South Africa,Eben Etzebeth,Lock,Sharks,120,Starter
+South Africa,RG Snyman,Lock,Leinster,34,Starter
+South Africa,Malcolm Marx,Hooker,Spears (Japan),64,Bench / Rotation
+South Africa,Vincent Koch,Tighthead Prop,Sharks,49,Bench / Rotation
+South Africa,Steven Kitshoff,Loosehead Prop,Stormers,85,Bench / Rotation
+South Africa,Gerhard Steenekamp,Loosehead Prop,Bulls,10,Bench / Rotation
+South Africa,Thomas du Toit,Tighthead Prop,Bath,20,Bench / Rotation
+South Africa,Salmaan Moerat,Lock,Stormers,15,Bench / Rotation
+Ireland,Andrew Porter,Loosehead Prop,Leinster,62,Starter
+Ireland,Dan Sheehan,Hooker,Leinster,26,Starter
+Ireland,Tadhg Furlong,Tighthead Prop,Leinster,72,Starter
+Ireland,Tadhg Beirne,Lock,Munster,46,Starter
+Ireland,Joe McCarthy,Lock,Leinster,12,Starter
+Ireland,Ronan Kelleher,Hooker,Leinster,28,Bench / Rotation
+Ireland,Finlay Bealham,Tighthead Prop,Connacht,36,Bench / Rotation
+Ireland,Cian Healy,Loosehead Prop,Leinster,129,Bench / Rotation
+Ireland,James Ryan,Lock,Leinster,64,Bench / Rotation
+New Zealand,Ethan de Groot,Loosehead Prop,Highlanders,25,Starter
+New Zealand,Codie Taylor,Hooker,Crusaders,85,Starter
+New Zealand,Tyrel Lomax,Tighthead Prop,Hurricanes,32,Starter
+New Zealand,Scott Barrett,Lock,Crusaders,69,Starter
+New Zealand,Patrick Tuipulotu,Lock,Blues,43,Starter
+New Zealand,Asafo Aumua,Hooker,Hurricanes,15,Bench / Rotation
+New Zealand,Fletcher Newell,Tighthead Prop,Crusaders,14,Bench / Rotation
+New Zealand,Tupou Vaa'i,Lock,Chiefs,25,Bench / Rotation
+New Zealand,Tamaiti Williams,Loosehead Prop,Crusaders,8,Bench / Rotation
+France,Cyril Baille,Loosehead Prop,Toulouse,47,Starter
+France,Peato Mauvaka,Hooker,Toulouse,32,Starter
+France,Uini Atonio,Tighthead Prop,La Rochelle,60,Starter
+France,Thibaud Flament,Lock,Toulouse,26,Starter
+France,Emmanuel Meafou,Lock,Toulouse,8,Starter
+France,Julien Marchand,Hooker,Toulouse,35,Bench / Rotation
+France,Dorian Aldegheri,Tighthead Prop,Toulouse,17,Bench / Rotation
+France,Reda Wardi,Loosehead Prop,La Rochelle,14,Bench / Rotation
+France,Paul Willemse,Lock,Montpellier,31,Bench / Rotation
+England,Ellis Genge,Loosehead Prop,Bristol,58,Starter
+England,Jamie George,Hooker,Saracens,88,Starter
+England,Dan Cole,Tighthead Prop,Leicester,112,Starter
+England,Maro Itoje,Lock,Saracens,76,Starter
+England,Ollie Chessum,Lock,Leicester,22,Starter
+England,Theo Dan,Hooker,Saracens,12,Bench / Rotation
+England,Joe Marler,Loosehead Prop,Harlequins,93,Bench / Rotation
+England,Will Stuart,Tighthead Prop,Bath,33,Bench / Rotation
+England,George Martin,Lock,Leicester,10,Bench / Rotation
+Australia,Angus Bell,Loosehead Prop,Waratahs,28,Starter
+Australia,Matt Faessler,Hooker,Reds,13,Starter
+Australia,Allan Alaalatoa,Tighthead Prop,Brumbies,67,Starter
+Australia,Nick Frost,Lock,Brumbies,15,Starter
+Australia,Will Skelton,Lock,La Rochelle,30,Starter
+Australia,Dave Porecki,Hooker,Waratahs,19,Bench / Rotation
+Australia,James Slipper,Loosehead Prop,Brumbies,134,Bench / Rotation
+Australia,Taniela Tupou,Tighthead Prop,Reds,51,Bench / Rotation
+Australia,Lukhan Salakaia-Loto,Lock,Reds,32,Bench / Rotation
+Wales,Gareth Thomas,Loosehead Prop,Ospreys,30,Starter
+Wales,Dewi Lake,Hooker,Ospreys,15,Starter
+Wales,Tomas Francis,Tighthead Prop,Provence,76,Starter
+Wales,Dafydd Jenkins,Lock,Exeter,17,Starter
+Wales,Adam Beard,Lock,Ospreys,52,Starter
+Wales,Ryan Elias,Hooker,Scarlets,41,Bench / Rotation
+Wales,Keiron Assiratti,Tighthead Prop,Cardiff,6,Bench / Rotation
+Wales,Corey Domachowski,Loosehead Prop,Cardiff,8,Bench / Rotation
+Wales,Will Rowlands,Lock,Racing 92,31,Bench / Rotation
+Italy,Danilo Fischetti,Loosehead Prop,Zebre,41,Starter
+Italy,Gianmarco Lucchesi,Hooker,Benetton,22,Starter
+Italy,Simone Ferrari,Tighthead Prop,Benetton,50,Starter
+Italy,Federico Ruzza,Lock,Benetton,54,Starter
+Italy,Niccolò Cannone,Lock,Benetton,38,Starter
+Italy,Giacomo Nicotera,Hooker,Benetton,18,Bench / Rotation
+Italy,Pietro Ceccarelli,Tighthead Prop,Benetton,31,Bench / Rotation
+Italy,Andrea Zambonin,Lock,Benetton,6,Bench / Rotation
+Fiji,Eroni Mawi,Loosehead Prop,Saracens,32,Starter
+Fiji,Te Vita Ikanivere,Hooker,Drua,15,Starter
+Fiji,Mesake Doge,Tighthead Prop,Drua,10,Starter
+Fiji,Isoa Nasilasila,Lock,Drua,12,Starter
+Fiji,Temo Mayanavanua,Lock,Northampton,18,Starter
+Fiji,Sam Matavesi,Hooker,Northampton,31,Bench / Rotation
+Fiji,Peni Ravai,Prop,Reds,42,Bench / Rotation
+Fiji,Albert Tuisue,Lock,Gloucester,25,Bench / Rotation
+Japan,Keita Inagaki,Loosehead Prop,Wild Knights,49,Starter
+Japan,Atsushi Sakate,Hooker,Wild Knights,37,Starter
+Japan,Jiwon Gu,Tighthead Prop,Kobe Steel,26,Starter
+Japan,Warner Dearns,Lock,Toshiba,18,Starter
+Japan,Jack Cornelsen,Lock,Wild Knights,19,Starter
+Japan,Shota Horie,Hooker,Wild Knights,76,Bench / Rotation
+Japan,Asaeli Ai Valu,Tighthead Prop,Wild Knights,28,Bench / Rotation
+Japan,Amanaki Saumaki,Lock,Canon,8,Bench / Rotation
+Georgia,Nika Abuladze,Loosehead Prop,Exeter,15,Starter
+Georgia,Shalva Mamukashvili,Hooker,Tbilisi,103,Starter
+Georgia,Beka Gigashvili,Tighthead Prop,Toulon,38,Starter
+Georgia,Konstantine Mikautadze,Lock,Bayonne,86,Starter
+Georgia,Lado Chachanidze,Lock,Nevers,15,Starter
+Georgia,Luka Nioradze,Hooker,Aurillac,8,Bench / Rotation
+Georgia,Irakli Aptsiauri,Tighthead Prop,Grenoble,6,Bench / Rotation
+Georgia,Nodar Cheishvili,Lock,Black Lion,48,Bench / Rotation
+USA,Jack Iscaro,Loosehead Prop,Old Glory DC,8,Starter
+USA,Dylan Fawsitt,Hooker,Chicago Hounds,25,Starter
+USA,Paul Mullen,Tighthead Prop,Utah Warriors,30,Starter
+USA,Greg Peterson,Lock,San Diego Legion,42,Starter
+USA,Siaosi Mahoni,Lock,Houston SaberCats,10,Starter
+USA,Kapeli Pifeleti,Hooker,Saracens,10,Bench / Rotation
+USA,David Ainu'u,Prop,Toulouse,22,Bench / Rotation
+USA,Nate Brakeley,Lock,New York,31,Bench / Rotation
+Portugal,Francisco Fernandes,Loosehead Prop,Beziers,45,Starter
+Portugal,Mike Tadjer,Hooker,Perpignan,33,Starter
+Portugal,Diogo Hasse Ferreira,Tighthead Prop,Dax,38,Starter
+Portugal,Steevy Cerqueira,Lock,Chambery,12,Starter
+Portugal,José Madeira,Lock,Grenoble,30,Starter
+Portugal,Luka Begic,Hooker,Chambery,6,Bench / Rotation
+Portugal,Anthony Alves,Tighthead Prop,Mont-de-Marsan,31,Bench / Rotation
+Portugal,Martim Belo,Lock,Cascais,8,Bench / Rotation
+Chile,Javier Carrasco,Loosehead Prop,Selknam,18,Starter
+Chile,Augusto Bohme,Hooker,Selknam,22,Starter
+Chile,Matías Dittus,Tighthead Prop,Selknam,21,Starter
+Chile,Clemente Saavedra,Lock,Selknam,20,Starter
+Chile,Santiago Pedrero,Lock,Selknam,12,Starter
+Chile,Diego Escobar,Hooker,Selknam,8,Bench / Rotation
+Chile,Salvador Lues,Loosehead Prop,Selknam,10,Bench / Rotation
+Chile,Pablo Huete,Lock,Selknam,32,Bench / Rotation
+Spain,Thierry Futeu,Loosehead Prop,Chartres,30,Starter
+Spain,Marco Pinto,Hooker,Biarritz,32,Starter
+Spain,Jon Zabala,Tighthead Prop,Béziers,28,Starter
+Spain,Manuel Mora,Lock,VRAC,41,Starter
+Spain,Alejandro Suárez,Lock,El Salvador,15,Starter
+Spain,Vicente Del Hoyo,Hooker,El Salvador,18,Bench / Rotation
+Spain,Joel Merkler,Tighthead Prop,Toulouse,12,Bench / Rotation
+Spain,Lucas Guillaume,Lock,Albi,25,Bench / Rotation
+Uruguay,Mateo Sanguinetti,Loosehead Prop,Peñarol,82,Starter
+Uruguay,Germán Kessler,Hooker,Peñarol,65,Starter
+Uruguay,Ignacio Péculo,Tighthead Prop,Peñarol,18,Starter
+Uruguay,Manuel Leindekar,Lock,Bayonne,28,Starter
+Uruguay,Felipe Aliaga,Lock,Peñarol,15,Starter
+Uruguay,Guillermo Pujadas,Hooker,Peñarol,26,Bench / Rotation
+Uruguay,Reinaldo Piussi,Tighthead Prop,Peñarol,10,Bench / Rotation
+Uruguay,Diego Magno,Lock,Peñarol,105,Bench / Rotation
+Tonga,Siegfried Fisi'ihoi,Loosehead Prop,Pau,22,Starter
+Tonga,Paula Ngauamo,Hooker,Castres,30,Starter
+Tonga,Ben Tameifuna,Tighthead Prop,Bordeaux,32,Starter
+Tonga,Leva Fifita,Lock,Ospreys,31,Starter
+Tonga,Sam Lousi,Lock,Scarlets,20,Starter
+Tonga,Siua Maile,Hooker,Benetton,15,Bench / Rotation
+Tonga,Tau Koloamatangi,Prop,Moana Pasifika,8,Bench / Rotation
+Tonga,Steve Mafi,Lock,Ospreys,41,Bench / Rotation
+Romania,Alexandru Savin,Loosehead Prop,Steaua,25,Starter
+Romania,Ovidiu Cojocaru,Hooker,Dinamo,32,Starter
+Romania,Alexandru Gordas,Tighthead Prop,Dinamo,35,Starter
+Romania,Adrian Motoc,Lock,Biarritz,28,Starter
+Romania,Stefan Iancu,Lock,Steaua,10,Starter
+Romania,Florin Bardasu,Hooker,Steaua,12,Bench / Rotation
+Romania,Gheorghe Gajion,Tighthead Prop,Mont-de-Marsan,24,Bench / Rotation
+Romania,Marius Iftimiciuc,Lock,Carcassonne,15,Bench / Rotation
+Canada,Liam Murray,Loosehead Prop,Dallas Jackals,10,Starter
+Canada,Andrew Quattrin,Hooker,New England,20,Starter
+Canada,Cole Keith,Tighthead Prop,New England,28,Starter
+Canada,Conor Keys,Lock,New England,32,Starter
+Canada,Iosefo Saqanere,Lock,Houston,8,Starter
+Canada,Foster Dewitt,Hooker,New England,5,Bench / Rotation
+Canada,Conor Young,Tighthead Prop,New England,8,Bench / Rotation
+Canada,Kyle Baillie,Lock,New England,35,Bench / Rotation
