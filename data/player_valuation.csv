@@ -1,0 +1,27 @@
+player_name,team,club,league,salary_usd,caps,role,perf_score,pvi,status
+Eben Etzebeth,South Africa,Sharks,URC,280000,120,Starter (Spine),95.0,3.39,Massively Underpaid
+Ox Nché,South Africa,Sharks,URC,150000,35,Starter,78.0,5.20,Massively Underpaid
+Bongi Mbonambi,South Africa,Sharks,URC,160000,68,Starter (Spine),82.0,5.13,Massively Underpaid
+Frans Malherbe,South Africa,Stormers,URC,210000,69,Starter,84.0,4.00,Massively Underpaid
+Malcolm Marx,South Africa,Spears,Japan JRLO,680000,64,Bench / Rotation,85.0,1.25,Fair Value
+Vincent Koch,South Africa,Sharks,URC,190000,49,Bench / Rotation,75.0,3.95,Underpaid
+Te Vita Ikanivere,Fiji,Drua,Super Rugby,65000,15,Starter (Spine),62.0,9.54,Massively Underpaid
+Eroni Mawi,Fiji,Saracens,Premiership,220000,32,Starter,68.0,3.09,Underpaid
+Dan Sheehan,Ireland,Leinster,URC,240000,26,Starter (Spine),88.0,3.67,Underpaid
+Andrew Porter,Ireland,Leinster,URC,320000,62,Starter,85.0,2.66,Underpaid
+Tadhg Furlong,Ireland,Leinster,URC,450000,72,Starter,89.0,1.98,Underpaid
+Caelan Doris,Ireland,Leinster,URC,380000,43,Starter (Spine),90.0,2.37,Underpaid
+Antoine Dupont,France,Toulouse,Top 14,950000,52,Starter (Spine),98.0,1.03,Fair Value
+Peato Mauvaka,France,Toulouse,Top 14,480000,32,Starter (Spine),82.0,1.71,Underpaid
+Uini Atonio,France,La Rochelle,Top 14,550000,60,Starter,78.0,1.42,Underpaid
+Cyril Baille,France,Toulouse,Top 14,520000,47,Starter,80.0,1.54,Underpaid
+Mid-Tier Top 14 Prop,France,Top 14 Club,Top 14,460000,3,Rotation,25.0,0.54,Overpaid
+French Squad Lock,France,Top 14 Club,Top 14,410000,5,Rotation,28.0,0.68,Overpaid
+Handré Pollard,South Africa,Leicester,Premiership,780000,68,Starter (Spine),86.0,1.10,Fair Value
+Owen Farrell,England,Racing 92,Top 14,1050000,112,Starter,88.0,0.84,Fair Value
+Maro Itoje,England,Saracens,Premiership,850000,76,Starter,90.0,1.06,Fair Value
+Ellis Genge,England,Bristol,Premiership,580000,58,Starter,82.0,1.41,Fair Value
+Premiership Rotation Lock,England,Premiership Club,Premiership,380000,2,Rotation,22.0,0.58,Overpaid
+Ardie Savea,New Zealand,Kobe,Japan JRLO,750000,84,Starter (Spine),94.0,1.25,Fair Value
+Codie Taylor,New Zealand,Crusaders,Super Rugby,340000,85,Starter (Spine),86.0,2.53,Underpaid
+Scott Barrett,New Zealand,Crusaders,Super Rugby,410000,69,Starter,85.0,2.07,Underpaid
