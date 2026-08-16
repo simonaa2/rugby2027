@@ -308,6 +308,14 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
             <option value="overpaid">🔴 Overpaid Contracts Only</option>
           </select>
         </div>
+
+        <div style="flex:1;min-width:220px;">
+          <label class="form-label" style="font-size:0.7rem;color:#38bdf8;font-weight:700;">Compensation View Mode</label>
+          <select id="pviCompModeSelect" class="form-select" style="border:1px solid rgba(56,189,248,0.4);" onchange="updatePVIVisualization()">
+            <option value="base" selected>🛡️ Base Club Cap Salary (Moneyball View)</option>
+            <option value="total">💰 Total Income (Base + Match Fees + Endorsements)</option>
+          </select>
+        </div>
       </div>
 
       <!-- Moneyball Rugby Market Efficiency Overview -->
@@ -3957,8 +3965,9 @@ function renderNCTable() {
       const nationFilter = document.getElementById('pviNationFilter') ? document.getElementById('pviNationFilter').value : 'all';
       const leagueFilter = document.getElementById('pviLeagueFilter') ? document.getElementById('pviLeagueFilter').value : 'all';
       const statusFilter = document.getElementById('pviFilterSelect') ? document.getElementById('pviFilterSelect').value : 'all';
+      const compMode = document.getElementById('pviCompModeSelect') ? document.getElementById('pviCompModeSelect').value : 'base';
 
-      return VALUATION_DATA.filter(d => {
+      const filtered = VALUATION_DATA.filter(d => {
         const matchNation = nationFilter === 'all' || d.team.includes(nationFilter);
         const matchLeague = leagueFilter === 'all' || d.league === leagueFilter;
         const matchStatus = statusFilter === 'all' 
@@ -3966,6 +3975,28 @@ function renderNCTable() {
           || (statusFilter === 'fair' && d.status === 'Fair Value')
           || (statusFilter === 'overpaid' && d.status === 'Overpaid');
         return matchNation && matchLeague && matchStatus;
+      });
+
+      return filtered.map(d => {
+        const v1_val = d.v1 !== undefined ? d.v1 : 0.25;
+        let sal = d.salary;
+        
+        if (compMode === 'total') {
+          // Total Compensation = Base + SARU/NZR Retainer + Test Match Fees + Endorsements
+          const mult = d.name.includes("Ox Nché") ? 2.53 : (d.caps >= 50 ? 1.85 : d.caps >= 20 ? 1.45 : 1.15);
+          sal = Math.round(d.salary * mult);
+        }
+
+        const calc_pvi = d.perf / (sal / 100000.0);
+        const calc_pvi_eigen = (d.perf * (1.0 + v1_val)) / (sal / 100000.0);
+
+        return {
+          ...d,
+          display_salary: sal,
+          display_pvi: calc_pvi,
+          display_pvi_eigen: calc_pvi_eigen,
+          v1: v1_val
+        };
       });
     }
 
@@ -4019,14 +4050,18 @@ function renderNCTable() {
 
       // Points
       filteredData.forEach((d) => {
-        const x = margin.left + ((d.salary - minSal) / (maxSal - minSal)) * chartWidth;
+        const sal = d.display_salary || d.salary;
+        const pvi_val = d.display_pvi || d.pvi;
+        const pvi_e = d.display_pvi_eigen || d.pvi_eigen;
+
+        const x = margin.left + ((sal - minSal) / (maxSal - minSal)) * chartWidth;
         const y = margin.top + chartHeight - ((d.perf - minPerf) / (maxPerf - minPerf)) * chartHeight;
         const color = d.status === 'Underpaid' ? '#4ade80' : d.status === 'Overpaid' ? '#f87171' : '#fbbf24';
 
         svgHtml += `
-          <g class="scatter-point" style="cursor:pointer;" onclick="alert('${d.name} (${d.team})\\nClub: ${d.club} (${d.league})\\nSalary: $${d.salary.toLocaleString()} USD\\nCaps: ${d.caps}\\nPVI Score: ${d.pvi.toFixed(2)}\\nStatus: ${d.status}')">
+          <g class="scatter-point" style="cursor:pointer;" onclick="alert('${d.name} (${d.team})\\nClub: ${d.club} (${d.league})\\nComp Valuation: $${sal.toLocaleString()} USD\\nCaps: ${d.caps}\\nEigenvector Centrality (v₁): ${d.v1.toFixed(2)}\\nBase PVI: ${pvi_val.toFixed(2)}\\nEigen-Adjusted PVI: ${pvi_e.toFixed(2)}\\nStatus: ${d.status}')">
             <circle cx="${x}" cy="${y}" r="7" fill="${color}" fill-opacity="0.85" stroke="#061409" stroke-width="1.5">
-              <title>${d.name} (${d.team})&#10;League: ${d.league}&#10;Salary: $${d.salary.toLocaleString()} USD&#10;Caps: ${d.caps}&#10;PVI: ${d.pvi.toFixed(2)} (${d.status})</title>
+              <title>${d.name} (${d.team})&#10;League: ${d.league}&#10;Valuation: $${sal.toLocaleString()} USD&#10;Caps: ${d.caps}&#10;EigenVector (v₁): ${d.v1.toFixed(2)}&#10;PVI (Eigen): ${pvi_e.toFixed(2)} (${d.status})</title>
             </circle>
             <text x="${x + 9}" y="${y + 3}" fill="#cbd5e1" font-size="9" font-weight="600">${d.name.split(' ')[0]}</text>
           </g>
@@ -4042,7 +4077,7 @@ function renderNCTable() {
       if (!tbody) return;
 
       let list = getFilteredValuationData();
-      list.sort((a, b) => (b.pvi_eigen || b.pvi) - (a.pvi_eigen || a.pvi));
+      list.sort((a, b) => (b.display_pvi_eigen || b.pvi) - (a.display_pvi_eigen || a.pvi));
 
       if (list.length === 0) {
         tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;color:#f87171;padding:1.5rem;">No players match the selected nation/league filters.</td></tr>`;
@@ -4054,17 +4089,18 @@ function renderNCTable() {
           : d.status === 'Overpaid' ? 'background:rgba(248,113,113,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.3);'
           : 'background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);';
 
-        const v1_val = d.v1 !== undefined ? d.v1 : 0.25;
-        const pvi_e = d.pvi_eigen !== undefined ? d.pvi_eigen : (d.pvi * (1 + v1_val));
+        const sal = d.display_salary || d.salary;
+        const pvi_val = d.display_pvi || d.pvi;
+        const pvi_e = d.display_pvi_eigen || d.pvi_eigen;
 
         return `<tr>
           <td><strong>${d.name}</strong></td>
           <td>${d.team} <span style="font-size:0.75rem;color:#4b7a5c;">(${d.club} · ${d.league})</span></td>
-          <td style="font-weight:800;color:#fbbf24;">$${d.salary.toLocaleString()} USD</td>
+          <td style="font-weight:800;color:#fbbf24;">$${sal.toLocaleString()} USD</td>
           <td><strong>${d.caps}</strong> caps</td>
           <td><strong style="color:#38bdf8;">${d.perf.toFixed(1)}</strong>/100</td>
-          <td><strong style="color:#c084fc;">v₁ = ${v1_val.toFixed(2)}</strong></td>
-          <td><strong style="color:#94a3b8;">${d.pvi.toFixed(2)}</strong></td>
+          <td><strong style="color:#c084fc;">v₁ = ${d.v1.toFixed(2)}</strong></td>
+          <td><strong style="color:#94a3b8;">${pvi_val.toFixed(2)}</strong></td>
           <td><strong style="color:#4ade80;font-size:0.92rem;">${pvi_e.toFixed(2)}</strong></td>
           <td><span style="font-size:0.72rem;font-weight:800;padding:0.25rem 0.6rem;border-radius:999px;${badgeClass}">${d.status}</span></td>
         </tr>`;
