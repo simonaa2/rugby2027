@@ -227,11 +227,38 @@ squad_data_v3 <- squad_data_v3 %>%
 # Load player database for dynamic spine calculation
 player_db <- read.csv(file.path(DATA_DIR, "player_database.csv"), stringsAsFactors = FALSE)
 
-# Calculate Spine Cohesion (2, 8, 9, 10, 15) per team
+# Calculate Spine Cohesion & Eigenvector Centrality Matrix per team
+calc_spine_eigenvector <- function(spine_clubs) {
+  n <- length(spine_clubs)
+  if (n < 2) return(list(score=2.0, lambda=0.0, ev_vec=rep(0.2, max(1, n))))
+  
+  # Build Adjacency Matrix A (n x n) representing shared club connections
+  A <- matrix(0, nrow = n, ncol = n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      if (i != j && spine_clubs[i] == spine_clubs[j] && spine_clubs[i] != "") {
+        A[i, j] <- 1.0
+      }
+    }
+  }
+  
+  # Solve Eigenvalue Decomposition: A * v = lambda * v
+  ev <- eigen(A)
+  lambda_max <- max(Re(ev$values))
+  principal_v <- abs(Re(ev$vectors[, 1]))
+  if (sum(principal_v) > 0) principal_v <- principal_v / sum(principal_v)
+  
+  # Max possible eigenvalue for K5 complete graph is 4.0
+  eigen_score <- round(min(10.0, max(2.0, (lambda_max / 4.0) * 8.0 + 2.0)), 2)
+  list(score = eigen_score, lambda = round(lambda_max, 3), ev_vec = round(principal_v, 3))
+}
+
 spine_scores <- lapply(unique(squad_data_v3$team), function(tm) {
   team_spine <- player_db %>% filter(team == tm & (grepl("Spine", role) | (position == "Hooker" & role == "Starter")))
   spine_clubs <- team_spine$club
   spine_clubs <- spine_clubs[spine_clubs != "" & !is.na(spine_clubs)]
+  
+  ev_res <- calc_spine_eigenvector(spine_clubs)
   
   if (length(spine_clubs) > 0) {
     tbl <- sort(table(spine_clubs), decreasing = TRUE)
@@ -254,6 +281,9 @@ spine_scores <- lapply(unique(squad_data_v3$team), function(tm) {
     spine_dominant_club = dom_club,
     spine_match_count = max_same,
     spine_score = score,
+    Sd_calc = score,
+    eigen_spine_score = ev_res$score,
+    eigen_lambda_max = ev_res$lambda,
     stringsAsFactors = FALSE
   )
 }) %>% bind_rows()

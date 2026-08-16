@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T09:10:49Z",
+  "generated_at": "2026-08-16T11:57:46Z",
   "model_version": "rugby_v3.0",
   "tournament": "RWC 2027 Australia",
   "total_teams": 21,
@@ -432,7 +432,7 @@
     },
     {
       "rank": 5,
-      "wr_rank": 12,
+      "wr_rank": 11,
       "team": "Italy",
       "synergy": 70.5,
       "Ti": 7.5,
@@ -521,7 +521,7 @@
     },
     {
       "rank": 6,
-      "wr_rank": 11,
+      "wr_rank": 10,
       "team": "Wales",
       "synergy": 67.2,
       "Ti": 7.8,
@@ -893,7 +893,7 @@
     },
     {
       "rank": 9,
-      "wr_rank": 10,
+      "wr_rank": 12,
       "team": "Japan",
       "synergy": 62.9,
       "Ti": 7.5,
@@ -909,7 +909,7 @@
       "fp_display": "Toyota (4/5)  ×0.55",
       "n_players": 290,
       "data_source": "research_compiled_v3",
-      "wr_pts": 76.42,
+      "wr_pts": 75.94,
       "coach_name": "Eddie Jones",
       "coach_tenure_yrs": 3,
       "avg_starter_caps": 44,
@@ -1087,7 +1087,7 @@
       "fp_display": "Brumbies (2/5)  ×1",
       "n_players": 420,
       "data_source": "research_compiled_v3",
-      "wr_pts": 81.61,
+      "wr_pts": 82.09,
       "coach_name": "Joe Schmidt",
       "coach_tenure_yrs": 2.5,
       "avg_starter_caps": 48,
