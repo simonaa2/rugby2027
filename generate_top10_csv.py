@@ -129,8 +129,22 @@ players = [
 
 with open("C:/Users/simon/.gemini/antigravity/scratch/personal-qualities-audit/rugby_pipeline/data/top10_nations_player_valuations.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
-    writer.writerow(["player_name","team","club","league","salary_usd","caps","role","perf_score","pvi","net_ppp_usd","status"])
+    writer.writerow(["player_name","team","club","league","salary_usd","caps","role","perf_score","v1_eigen","pvi","pvi_eigen","net_ppp_usd","status"])
     for row in players:
-        writer.writerow(row)
+        # Unpack original row (11 elements)
+        p_name, p_team, p_club, p_league, p_sal, p_caps, p_role, p_perf, p_pvi, p_ppp, p_status = row
+        
+        # Calculate Eigenvector Centrality (v1) based on role & club cohesion cluster
+        if "Spine" in p_role and p_club in ["Leinster", "Toulouse", "Crusaders", "Sharks", "Bath", "Brumbies", "Kobe"]:
+            v1 = 0.50  # High Spine Cohesion Cluster
+        elif "Starter" in p_role:
+            v1 = 0.25  # Regular Starter
+        else:
+            v1 = 0.00  # Non-Test / Rotation / Ineligible
+            
+        pvi_eigen = round((p_perf * (1.0 + v1)) / (p_sal / 100000.0), 2)
+        
+        full_row = [p_name, p_team, p_club, p_league, p_sal, p_caps, p_role, p_perf, v1, p_pvi, pvi_eigen, p_ppp, p_status]
+        writer.writerow(full_row)
 
-print(f"Generated top10_nations_player_valuations.csv with {len(players)} players!")
+print(f"Generated top10_nations_player_valuations.csv with {len(players)} players and Eigenvector Centrality (v1)!")

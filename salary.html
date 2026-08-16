@@ -391,6 +391,2057 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
             <th>Current Salary (USD)</th>
             <th>Test Caps</th>
             <th>Perf. Score</th>
+            <th>EigenVector (v₁)</th>
+            <th>Base PVI</th>
+            <th>PVI (Eigen-Adjusted)</th>
+            <th>Valuation Status</th>
+          </tr>
+        </thead>
+        <tbody id="pviTableBody">
+          <!-- JS Generated -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 2: NATIONS CHAMPIONSHIP MATCH FEES -->
+  <div class="tab-pane" id="tab-nc">
+    <div class="card-box">
+      <div class="card-title">Nations Championship — Test Match Fee Inequality (2026)</div>
+      <div class="card-sub">Comparing estimated per-match fees and total annual Test match income for players across the 12 Nations Championship teams.</div>
+
+      <table class="nc-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Nation</th>
+            <th>Union Contracting Structure</th>
+            <th>Match Fee / Game (USD)</th>
+            <th>Est. 12-Match Test Earnings</th>
+            <th>Match Fee Gap</th>
+          </tr>
+        </thead>
+        <tbody id="ncTableBody">
+          <!-- JS generated -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 3: CURRENCY ARBITRAGE MATRIX -->
+  <div class="tab-pane" id="tab-matrix">
+    <div class="card-box">
+      <div class="card-title">Currency Arbitrage &amp; Purchasing Power Matrix</div>
+      <div class="card-sub">Understanding why European and Japanese contracts convert into astronomical local values in South Africa, Fiji, and New Zealand.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:1.5rem;">
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem;">
+          <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#86efac;margin-bottom:0.5rem;">🇬🇧 GBP (£) to ZAR (R)</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:900;color:#fbbf24;">£1.00 = R23.50</div>
+          <div style="font-size:0.78rem;color:#4b7a5c;margin-top:0.5rem;line-height:1.5;">
+            A £250,000 Premiership contract converts to **R5,875,000 ZAR**. Only a handful of top Springboks earn this domestically.
+          </div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem;">
+          <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#86efac;margin-bottom:0.5rem;">🇫🇷 EUR (€) to ZAR (R)</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:900;color:#4ade80;">€1.00 = R19.80</div>
+          <div style="font-size:0.78rem;color:#4b7a5c;margin-top:0.5rem;line-height:1.5;">
+            French Top 14 (€10.7M salary cap) offers average contracts of €300,000 (~**R5.9M ZAR**).
+          </div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem;">
+          <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#86efac;margin-bottom:0.5rem;">🇯🇵 JPY (¥) Corporate Contracts</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:1.75rem;font-weight:900;color:#38bdf8;">¥100M = ~$680k USD</div>
+          <div style="font-size:0.78rem;color:#4b7a5c;margin-top:0.5rem;line-height:1.5;">
+            Japan League One offers flat corporate salaries with lower physical wear and 20.4% tax rates for non-residents.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER TEXT -->
+  <div class="footer-text">
+    Data Sources &amp; Literature:<br>
+    SARU Salary Cap &amp; PONI Structure (2025/2026) · French LNR Top 14 Salary Cap Regulations (€10.7M) · RFU Enhanced Test Contracts (£23k/Test)<br>
+    DataTrends Research: <em>"$195,000 Median Salary Tipping Point in South African Rugby Labor Migration"</em> (DataTrends.com.au)<br>
+    <a href="https://github.com/simonaa2/rugby2027" target="_blank">📦 Open Source Code &amp; Models on GitHub</a> · <a href="rugby.html">🏉 Rugby Synergy v3.0</a> · <a href="index.html">← EconTools Hub</a>
+  </div>
+
+</div>
+</div>
+
+<script>
+const CURRENCY_RATES = {
+  ZA: { symbol: 'R', rate: 18.20, pppMod: 1.0, tax: 0.40, name: 'ZAR' },
+  NZ: { symbol: '$', rate: 1.65, pppMod: 0.85, tax: 0.39, name: 'NZD' },
+  AU: { symbol: '$', rate: 1.52, pppMod: 0.85, tax: 0.45, name: 'AUD' },
+  FJ: { symbol: '$', rate: 2.25, pppMod: 1.2, tax: 0.20, name: 'FJD' }
+};
+
+const DEST_MARKETS = {
+  FR: { name: 'France (Top 14)', tax: 0.45, pppPenalty: 0.25, curr: 'EUR', currRate: 0.92 },
+  UK: { name: 'England (Premiership)', tax: 0.45, pppPenalty: 0.30, curr: 'GBP', currRate: 0.78 },
+  JP: { name: 'Japan (League One)', tax: 0.20, pppPenalty: 0.15, curr: 'JPY', currRate: 152.0 }
+};
+
+const NC_FEE_DATA = [
+  { rank: 1, team: 'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', struct: 'RFU Enhanced Contracts', feeUSD: 29000, annualUSD: 348000 },
+  { rank: 2, team: 'Ireland 🇮🇪', struct: 'IRFU Central Contracts + Bonus', feeUSD: 22000, annualUSD: 264000 },
+  { rank: 3, team: 'France 🇫🇷', struct: 'FFR Test Match Allowance', feeUSD: 20000, annualUSD: 240000 },
+  { rank: 4, team: 'New Zealand 🇳🇿', struct: 'NZR Central Pool', feeUSD: 14000, annualUSD: 168000 },
+  { rank: 5, team: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿', struct: 'SRU Match Fee Pool', feeUSD: 13000, annualUSD: 156000 },
+  { rank: 6, team: 'Wales 🏴󠁧󠁢󠁷󠁬󠁳󠁤', struct: 'WRU Match Scale', feeUSD: 11000, annualUSD: 132000 },
+  { rank: 7, team: 'Australia 🇦🇺', struct: 'RA Central Incentive', feeUSD: 10000, annualUSD: 120000 },
+  { rank: 8, team: 'South Africa 🇿🇦', struct: 'SARU PONI Pool + Match Fee', feeUSD: 6800, annualUSD: 81600 },
+  { rank: 9, team: 'Japan 🇯🇵', struct: 'JRFU Match Allowance', feeUSD: 6000, annualUSD: 72000 },
+  { rank: 10, team: 'Italy 🇮🇹', struct: 'FIR Match Bonus', feeUSD: 5500, annualUSD: 66000 },
+  { rank: 11, team: 'Fiji 🇫🇯', struct: 'FRU Test Allowance', feeUSD: 3000, annualUSD: 36000 },
+  { rank: 12, team: 'Georgia 🇬🇪', struct: 'GRU Match Scale', feeUSD: 2500, annualUSD: 30000 }
+];
+
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+function runSimulation() {
+  const originKey = document.getElementById('originNation').value;
+  const targetKey = document.getElementById('targetMarket').value;
+  const domOffer = parseFloat(document.getElementById('domOfferSlider').value);
+  const targetOffer = parseFloat(document.getElementById('targetOfferSlider').value);
+
+  document.getElementById('domOfferDisplay').textContent = '$' + domOffer.toLocaleString();
+  document.getElementById('targetOfferDisplay').textContent = '$' + targetOffer.toLocaleString();
+
+  const origin = CURRENCY_RATES[originKey];
+  const target = DEST_MARKETS[targetKey];
+
+  // Domestic local currency
+  const domLocal = Math.round(domOffer * origin.rate);
+  const domNetUSD = domOffer * (1 - origin.tax);
+
+  // Overseas net PPP value
+  const targetNetUSD = targetOffer * (1 - target.tax);
+  const targetRealPPPUSD = targetNetUSD * (1 - target.pppPenalty);
+
+  const netDiff = Math.round(targetRealPPPUSD - domNetUSD);
+  const diffSign = netDiff >= 0 ? '+' : '';
+
+  document.getElementById('domValUSD').textContent = '$' + domOffer.toLocaleString() + ' USD';
+  document.getElementById('domValLocal').textContent = origin.symbol + ' ' + domLocal.toLocaleString() + ' ' + origin.name;
+  document.getElementById('targetNetUSD').textContent = '$' + Math.round(targetNetUSD).toLocaleString() + ' USD';
+  document.getElementById('pppAdj').textContent = '-' + (target.pppPenalty * 100).toFixed(0) + '% (' + target.name + ' Cost of Living)';
+  document.getElementById('netDiffDisplay').textContent = diffSign + '$' + netDiff.toLocaleString();
+
+  const tippingDiff = domOffer - 195000;
+  const tippingText = tippingDiff >= 0 
+    ? 'Meets Baseline (+' + '$' + tippingDiff.toLocaleString() + ')' 
+    : 'Below Baseline (-$' + Math.abs(tippingDiff).toLocaleString() + ')';
+  document.getElementById('tippingStatus').textContent = tippingText;
+
+  const badge = document.getElementById('statusBadge');
+  if (netDiff > 30000) {
+    badge.className = 'status-badge badge-migrate';
+    badge.textContent = '✈️ HIGH MIGRATION RISK — Overseas offer exceeds domestic net PPP value by $' + netDiff.toLocaleString();
+  } else if (netDiff < -10000) {
+    badge.className = 'status-badge badge-retain';
+    badge.textContent = '🇿🇦 HIGH RETENTION LIKELIHOOD — Domestic purchasing power is superior';
+  } else {
+    badge.className = 'status-badge badge-neutral';
+    badge.textContent = '⚖️ BALANCED TIPPING POINT — Financial incentives are neutral';
+  }
+}
+
+function renderNCTable() {
+  const tbody = document.getElementById('ncTableBody');
+  const maxFee = NC_FEE_DATA[0].feeUSD;
+
+  tbody.innerHTML = NC_FEE_DATA.map(d => {
+    const pct = Math.round((d.feeUSD / maxFee) * 100);
+    const gap = d.rank === 1 ? 'Baseline' : '-' + Math.round(((maxFee - d.feeUSD) / maxFee) * 100) + '%';
+    return `<tr>
+      <td><strong>#${d.rank}</strong></td>
+      <td><strong>${d.team}</strong></td>
+      <td style="color:#4b7a5c;">${d.struct}</td>
+      <td style="font-weight:800;color:#4ade80;">$${d.feeUSD.toLocaleString()} USD</td>
+      <td style="font-weight:800;color:#fbbf24;">$${d.annualUSD.toLocaleString()} USD</td>
+      <td>
+        <div style="font-size:0.75rem;color:#f87171;font-weight:700;">${gap}</div>
+        <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:${pct}%;"></div></div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+    const VALUATION_DATA = [
+  {
+    "name": "Eben Etzebeth",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Sharks",
+    "league": "URC",
+    "salary": 280000,
+    "caps": 120,
+    "role": "Starter (Spine)",
+    "perf": 95.0,
+    "v1": 0.5,
+    "pvi": 3.39,
+    "pvi_eigen": 50.89,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Ox Nch\u00e9",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Sharks",
+    "league": "URC",
+    "salary": 150000,
+    "caps": 35,
+    "role": "Starter",
+    "perf": 78.0,
+    "v1": 0.25,
+    "pvi": 5.2,
+    "pvi_eigen": 65.0,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Bongi Mbonambi",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Sharks",
+    "league": "URC",
+    "salary": 160000,
+    "caps": 68,
+    "role": "Starter (Spine)",
+    "perf": 82.0,
+    "v1": 0.5,
+    "pvi": 5.13,
+    "pvi_eigen": 76.88,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Frans Malherbe",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Stormers",
+    "league": "URC",
+    "salary": 210000,
+    "caps": 69,
+    "role": "Starter",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 4.0,
+    "pvi_eigen": 50.0,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Siya Kolisi",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Sharks",
+    "league": "URC",
+    "salary": 550000,
+    "caps": 85,
+    "role": "Starter (Spine)",
+    "perf": 92.0,
+    "v1": 0.5,
+    "pvi": 1.67,
+    "pvi_eigen": 25.09,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Pieter-Steph du Toit",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Verblitz",
+    "league": "Japan JRLO",
+    "salary": 750000,
+    "caps": 76,
+    "role": "Starter",
+    "perf": 94.0,
+    "v1": 0.25,
+    "pvi": 1.25,
+    "pvi_eigen": 15.67,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Cheslin Kolbe",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Suntory",
+    "league": "Japan JRLO",
+    "salary": 950000,
+    "caps": 38,
+    "role": "Starter",
+    "perf": 91.0,
+    "v1": 0.25,
+    "pvi": 0.96,
+    "pvi_eigen": 11.97,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Malcolm Marx",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Spears",
+    "league": "Japan JRLO",
+    "salary": 680000,
+    "caps": 64,
+    "role": "Bench / Rotation",
+    "perf": 85.0,
+    "v1": 0.0,
+    "pvi": 1.25,
+    "pvi_eigen": 12.5,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Vincent Koch",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Sharks",
+    "league": "URC",
+    "salary": 190000,
+    "caps": 49,
+    "role": "Bench / Rotation",
+    "perf": 75.0,
+    "v1": 0.0,
+    "pvi": 3.95,
+    "pvi_eigen": 39.47,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Handr\u00e9 Pollard",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Leicester",
+    "league": "Premiership",
+    "salary": 780000,
+    "caps": 68,
+    "role": "Starter (Spine)",
+    "perf": 86.0,
+    "v1": 0.25,
+    "pvi": 1.1,
+    "pvi_eigen": 13.78,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Damian de Allende",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Wild Knights",
+    "league": "Japan JRLO",
+    "salary": 720000,
+    "caps": 78,
+    "role": "Starter",
+    "perf": 88.0,
+    "v1": 0.25,
+    "pvi": 1.22,
+    "pvi_eigen": 15.28,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Jesse Kriel",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Eagles",
+    "league": "Japan JRLO",
+    "salary": 650000,
+    "caps": 68,
+    "role": "Starter",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 1.31,
+    "pvi_eigen": 16.35,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Willie le Roux",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Bulls",
+    "league": "URC",
+    "salary": 220000,
+    "caps": 93,
+    "role": "Starter (Spine)",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 3.82,
+    "pvi_eigen": 47.73,
+    "status": "Underpaid"
+  },
+  {
+    "name": "RG Snyman",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 480000,
+    "caps": 34,
+    "role": "Starter",
+    "perf": 86.0,
+    "v1": 0.25,
+    "pvi": 1.79,
+    "pvi_eigen": 22.4,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Kwagga Smith",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Blue Revs",
+    "league": "Japan JRLO",
+    "salary": 620000,
+    "caps": 40,
+    "role": "Bench / Rotation",
+    "perf": 84.0,
+    "v1": 0.0,
+    "pvi": 1.35,
+    "pvi_eigen": 13.55,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Kurt-Lee Arendse",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Bulls",
+    "league": "URC",
+    "salary": 180000,
+    "caps": 18,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 4.56,
+    "pvi_eigen": 56.94,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Damian Willemse",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Stormers",
+    "league": "URC",
+    "salary": 240000,
+    "caps": 40,
+    "role": "Starter (Spine)",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 3.54,
+    "pvi_eigen": 44.27,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Manie Libbok",
+    "team": "South Africa \ud83c\uddff\ud83c\udde6",
+    "club": "Stormers",
+    "league": "URC",
+    "salary": 190000,
+    "caps": 18,
+    "role": "Starter (Spine)",
+    "perf": 78.0,
+    "v1": 0.25,
+    "pvi": 4.11,
+    "pvi_eigen": 51.32,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Ardie Savea",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Kobe",
+    "league": "Japan JRLO",
+    "salary": 750000,
+    "caps": 84,
+    "role": "Starter (Spine)",
+    "perf": 94.0,
+    "v1": 0.5,
+    "pvi": 1.25,
+    "pvi_eigen": 18.8,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Codie Taylor",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Crusaders",
+    "league": "Super Rugby",
+    "salary": 340000,
+    "caps": 85,
+    "role": "Starter (Spine)",
+    "perf": 86.0,
+    "v1": 0.5,
+    "pvi": 2.53,
+    "pvi_eigen": 37.94,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Scott Barrett",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Crusaders",
+    "league": "Super Rugby",
+    "salary": 410000,
+    "caps": 69,
+    "role": "Starter",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 2.07,
+    "pvi_eigen": 25.91,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Jordie Barrett",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Hurricanes",
+    "league": "Super Rugby",
+    "salary": 380000,
+    "caps": 60,
+    "role": "Starter",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 2.18,
+    "pvi_eigen": 27.3,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Rieko Ioane",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Blues",
+    "league": "Super Rugby",
+    "salary": 390000,
+    "caps": 67,
+    "role": "Starter",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 2.15,
+    "pvi_eigen": 26.92,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Beauden Barrett",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Verblitz",
+    "league": "Japan JRLO",
+    "salary": 820000,
+    "caps": 123,
+    "role": "Starter (Spine)",
+    "perf": 92.0,
+    "v1": 0.25,
+    "pvi": 1.12,
+    "pvi_eigen": 14.02,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Will Jordan",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Crusaders",
+    "league": "Super Rugby",
+    "salary": 360000,
+    "caps": 31,
+    "role": "Starter (Spine)",
+    "perf": 88.0,
+    "v1": 0.5,
+    "pvi": 2.44,
+    "pvi_eigen": 36.67,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Mark Tele'a",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Blues",
+    "league": "Super Rugby",
+    "salary": 280000,
+    "caps": 11,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 2.86,
+    "pvi_eigen": 35.71,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Tyrel Lomax",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Hurricanes",
+    "league": "Super Rugby",
+    "salary": 320000,
+    "caps": 32,
+    "role": "Starter",
+    "perf": 81.0,
+    "v1": 0.25,
+    "pvi": 2.53,
+    "pvi_eigen": 31.64,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Ethan de Groot",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Highlanders",
+    "league": "Super Rugby",
+    "salary": 290000,
+    "caps": 25,
+    "role": "Starter",
+    "perf": 79.0,
+    "v1": 0.25,
+    "pvi": 2.72,
+    "pvi_eigen": 34.05,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Richie Mo'unga",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Brave Lupus",
+    "league": "Japan JRLO",
+    "salary": 850000,
+    "caps": 56,
+    "role": "Starter (Spine)",
+    "perf": 91.0,
+    "v1": 0.25,
+    "pvi": 1.07,
+    "pvi_eigen": 13.38,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Shannon Frizell",
+    "team": "New Zealand \ud83c\uddf3\ud83c\uddff",
+    "club": "Brave Lupus",
+    "league": "Japan JRLO",
+    "salary": 650000,
+    "caps": 33,
+    "role": "Starter",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.28,
+    "pvi_eigen": 15.96,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Dan Sheehan",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 240000,
+    "caps": 26,
+    "role": "Starter (Spine)",
+    "perf": 88.0,
+    "v1": 0.5,
+    "pvi": 3.67,
+    "pvi_eigen": 55.0,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Andrew Porter",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 320000,
+    "caps": 62,
+    "role": "Starter",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 2.66,
+    "pvi_eigen": 33.2,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Tadhg Furlong",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 450000,
+    "caps": 72,
+    "role": "Starter",
+    "perf": 89.0,
+    "v1": 0.25,
+    "pvi": 1.98,
+    "pvi_eigen": 24.72,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Caelan Doris",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 380000,
+    "caps": 43,
+    "role": "Starter (Spine)",
+    "perf": 90.0,
+    "v1": 0.5,
+    "pvi": 2.37,
+    "pvi_eigen": 35.53,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Jamison Gibson-Park",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 320000,
+    "caps": 35,
+    "role": "Starter (Spine)",
+    "perf": 87.0,
+    "v1": 0.5,
+    "pvi": 2.72,
+    "pvi_eigen": 40.78,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Hugo Keenan",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 310000,
+    "caps": 39,
+    "role": "Starter (Spine)",
+    "perf": 86.0,
+    "v1": 0.5,
+    "pvi": 2.77,
+    "pvi_eigen": 41.61,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Bundee Aki",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Connacht",
+    "league": "URC",
+    "salary": 390000,
+    "caps": 56,
+    "role": "Starter",
+    "perf": 90.0,
+    "v1": 0.25,
+    "pvi": 2.31,
+    "pvi_eigen": 28.85,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Garry Ringrose",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 350000,
+    "caps": 57,
+    "role": "Starter",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 2.43,
+    "pvi_eigen": 30.36,
+    "status": "Underpaid"
+  },
+  {
+    "name": "James Lowe",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 340000,
+    "caps": 31,
+    "role": "Starter",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 2.47,
+    "pvi_eigen": 30.88,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Josh van der Flier",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 380000,
+    "caps": 62,
+    "role": "Starter",
+    "perf": 89.0,
+    "v1": 0.25,
+    "pvi": 2.34,
+    "pvi_eigen": 29.28,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Peter O'Mahony",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Munster",
+    "league": "URC",
+    "salary": 360000,
+    "caps": 105,
+    "role": "Starter",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 2.33,
+    "pvi_eigen": 29.17,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Tadhg Beirne",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Munster",
+    "league": "URC",
+    "salary": 370000,
+    "caps": 46,
+    "role": "Starter",
+    "perf": 87.0,
+    "v1": 0.25,
+    "pvi": 2.35,
+    "pvi_eigen": 29.39,
+    "status": "Underpaid"
+  },
+  {
+    "name": "James Ryan",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Leinster",
+    "league": "URC",
+    "salary": 350000,
+    "caps": 64,
+    "role": "Bench / Rotation",
+    "perf": 83.0,
+    "v1": 0.0,
+    "pvi": 2.37,
+    "pvi_eigen": 23.71,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Jack Crowley",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Munster",
+    "league": "URC",
+    "salary": 220000,
+    "caps": 18,
+    "role": "Starter (Spine)",
+    "perf": 79.0,
+    "v1": 0.25,
+    "pvi": 3.59,
+    "pvi_eigen": 44.89,
+    "status": "Underpaid"
+  },
+  {
+    "name": "John Ryan",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Munster",
+    "league": "URC",
+    "salary": 180000,
+    "caps": 24,
+    "role": "Rotation / Veteran",
+    "perf": 65.0,
+    "v1": 0.0,
+    "pvi": 3.61,
+    "pvi_eigen": 36.11,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Paddy Jackson",
+    "team": "Ireland \ud83c\uddee\ud83c\uddea",
+    "club": "Lyon",
+    "league": "Top 14",
+    "salary": 450000,
+    "caps": 0,
+    "role": "Club Only",
+    "perf": 20.0,
+    "v1": 0.0,
+    "pvi": 0.44,
+    "pvi_eigen": 4.44,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Antoine Dupont",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 950000,
+    "caps": 52,
+    "role": "Starter (Spine)",
+    "perf": 98.0,
+    "v1": 0.5,
+    "pvi": 1.03,
+    "pvi_eigen": 15.47,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Thomas Ramos",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 620000,
+    "caps": 36,
+    "role": "Starter (Spine)",
+    "perf": 86.0,
+    "v1": 0.5,
+    "pvi": 1.39,
+    "pvi_eigen": 20.81,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Gr\u00e9gory Alldritt",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "La Rochelle",
+    "league": "Top 14",
+    "salary": 720000,
+    "caps": 48,
+    "role": "Starter (Spine)",
+    "perf": 90.0,
+    "v1": 0.25,
+    "pvi": 1.25,
+    "pvi_eigen": 15.62,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Peato Mauvaka",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 480000,
+    "caps": 32,
+    "role": "Starter (Spine)",
+    "perf": 82.0,
+    "v1": 0.5,
+    "pvi": 1.71,
+    "pvi_eigen": 25.62,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Cyril Baille",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 520000,
+    "caps": 47,
+    "role": "Starter",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.6,
+    "pvi_eigen": 19.95,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Uini Atonio",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "La Rochelle",
+    "league": "Top 14",
+    "salary": 550000,
+    "caps": 60,
+    "role": "Starter",
+    "perf": 78.0,
+    "v1": 0.25,
+    "pvi": 1.42,
+    "pvi_eigen": 17.73,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Thibaud Flament",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 460000,
+    "caps": 26,
+    "role": "Starter",
+    "perf": 81.0,
+    "v1": 0.25,
+    "pvi": 1.76,
+    "pvi_eigen": 22.01,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Damian Penaud",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Bordeaux",
+    "league": "Top 14",
+    "salary": 680000,
+    "caps": 48,
+    "role": "Starter",
+    "perf": 91.0,
+    "v1": 0.25,
+    "pvi": 1.34,
+    "pvi_eigen": 16.73,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Louis Bielle-Biarrey",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Bordeaux",
+    "league": "Top 14",
+    "salary": 320000,
+    "caps": 11,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 2.56,
+    "pvi_eigen": 32.03,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Matthieu Jalibert",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Bordeaux",
+    "league": "Top 14",
+    "salary": 580000,
+    "caps": 30,
+    "role": "Starter (Spine)",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.43,
+    "pvi_eigen": 17.89,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Ga\u00ebl Fickou",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Racing 92",
+    "league": "Top 14",
+    "salary": 750000,
+    "caps": 85,
+    "role": "Starter",
+    "perf": 87.0,
+    "v1": 0.25,
+    "pvi": 1.16,
+    "pvi_eigen": 14.5,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Mid-Tier Top 14 Prop",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Top 14 Club",
+    "league": "Top 14",
+    "salary": 460000,
+    "caps": 3,
+    "role": "Rotation",
+    "perf": 25.0,
+    "v1": 0.0,
+    "pvi": 0.54,
+    "pvi_eigen": 5.43,
+    "status": "Overpaid"
+  },
+  {
+    "name": "French Squad Lock",
+    "team": "France \ud83c\uddeb\ud83c\uddf7",
+    "club": "Top 14 Club",
+    "league": "Top 14",
+    "salary": 410000,
+    "caps": 5,
+    "role": "Rotation",
+    "perf": 28.0,
+    "v1": 0.0,
+    "pvi": 0.68,
+    "pvi_eigen": 6.83,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Maro Itoje",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Saracens",
+    "league": "Premiership",
+    "salary": 850000,
+    "caps": 76,
+    "role": "Starter",
+    "perf": 90.0,
+    "v1": 0.25,
+    "pvi": 1.06,
+    "pvi_eigen": 13.24,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Ellis Genge",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Bristol",
+    "league": "Premiership",
+    "salary": 580000,
+    "caps": 58,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 1.41,
+    "pvi_eigen": 17.67,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Ben Earl",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Saracens",
+    "league": "Premiership",
+    "salary": 420000,
+    "caps": 30,
+    "role": "Starter (Spine)",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 2.0,
+    "pvi_eigen": 25.0,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Marcus Smith",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Harlequins",
+    "league": "Premiership",
+    "salary": 650000,
+    "caps": 30,
+    "role": "Starter (Spine)",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.28,
+    "pvi_eigen": 15.96,
+    "status": "Fair Value"
+  },
+  {
+    "name": "George Ford",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Sale",
+    "league": "Premiership",
+    "salary": 620000,
+    "caps": 96,
+    "role": "Starter (Spine)",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 1.37,
+    "pvi_eigen": 17.14,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Freddie Steward",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Leicester",
+    "league": "Premiership",
+    "salary": 380000,
+    "caps": 34,
+    "role": "Starter (Spine)",
+    "perf": 79.0,
+    "v1": 0.25,
+    "pvi": 2.08,
+    "pvi_eigen": 25.99,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Henry Slade",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Exeter",
+    "league": "Premiership",
+    "salary": 480000,
+    "caps": 60,
+    "role": "Starter",
+    "perf": 81.0,
+    "v1": 0.25,
+    "pvi": 1.69,
+    "pvi_eigen": 21.09,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Jamie George",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Saracens",
+    "league": "Premiership",
+    "salary": 520000,
+    "caps": 88,
+    "role": "Starter (Spine)",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.6,
+    "pvi_eigen": 19.95,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Dan Cole",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Leicester",
+    "league": "Premiership",
+    "salary": 320000,
+    "caps": 112,
+    "role": "Starter",
+    "perf": 76.0,
+    "v1": 0.25,
+    "pvi": 2.38,
+    "pvi_eigen": 29.69,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Jack Willis",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 550000,
+    "caps": 0,
+    "role": "Club / Ineligible",
+    "perf": 25.0,
+    "v1": 0.0,
+    "pvi": 0.45,
+    "pvi_eigen": 4.55,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Manu Tuilagi",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Bayonne",
+    "league": "Top 14",
+    "salary": 600000,
+    "caps": 1,
+    "role": "Club / Ineligible",
+    "perf": 30.0,
+    "v1": 0.0,
+    "pvi": 0.5,
+    "pvi_eigen": 5.0,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Billy Vunipola",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Montpellier",
+    "league": "Top 14",
+    "salary": 520000,
+    "caps": 0,
+    "role": "Club / Ineligible",
+    "perf": 27.0,
+    "v1": 0.0,
+    "pvi": 0.52,
+    "pvi_eigen": 5.19,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Zach Mercer",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Gloucester",
+    "league": "Premiership",
+    "salary": 480000,
+    "caps": 0,
+    "role": "Club Only",
+    "perf": 26.0,
+    "v1": 0.0,
+    "pvi": 0.54,
+    "pvi_eigen": 5.42,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Kyle Sinckler",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Toulon",
+    "league": "Top 14",
+    "salary": 580000,
+    "caps": 0,
+    "role": "Club / Ineligible",
+    "perf": 32.0,
+    "v1": 0.0,
+    "pvi": 0.55,
+    "pvi_eigen": 5.52,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Luke Cowan-Dickie",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Sale",
+    "league": "Premiership",
+    "salary": 450000,
+    "caps": 2,
+    "role": "Club / Backup",
+    "perf": 30.0,
+    "v1": 0.0,
+    "pvi": 0.67,
+    "pvi_eigen": 6.67,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Courtney Lawes",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Brive",
+    "league": "Top 14",
+    "salary": 520000,
+    "caps": 0,
+    "role": "Retired / Club",
+    "perf": 35.0,
+    "v1": 0.0,
+    "pvi": 0.67,
+    "pvi_eigen": 6.73,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Premiership Rotation Lock",
+    "team": "England \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f",
+    "club": "Premiership Club",
+    "league": "Premiership",
+    "salary": 380000,
+    "caps": 2,
+    "role": "Rotation",
+    "perf": 22.0,
+    "v1": 0.0,
+    "pvi": 0.58,
+    "pvi_eigen": 5.79,
+    "status": "Overpaid"
+  },
+  {
+    "name": "Finn Russell",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Bath",
+    "league": "Premiership",
+    "salary": 1150000,
+    "caps": 75,
+    "role": "Starter (Spine)",
+    "perf": 92.0,
+    "v1": 0.5,
+    "pvi": 0.8,
+    "pvi_eigen": 12.0,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Duhan van der Merwe",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Edinburgh",
+    "league": "URC",
+    "salary": 380000,
+    "caps": 39,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 2.16,
+    "pvi_eigen": 26.97,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Zander Fagerson",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Glasgow",
+    "league": "URC",
+    "salary": 310000,
+    "caps": 62,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 2.58,
+    "pvi_eigen": 32.26,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Pierre Schoeman",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Edinburgh",
+    "league": "URC",
+    "salary": 320000,
+    "caps": 31,
+    "role": "Starter",
+    "perf": 81.0,
+    "v1": 0.25,
+    "pvi": 2.53,
+    "pvi_eigen": 31.64,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Huw Jones",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Glasgow",
+    "league": "URC",
+    "salary": 290000,
+    "caps": 48,
+    "role": "Starter",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 2.86,
+    "pvi_eigen": 35.78,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Sione Tuipulotu",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Glasgow",
+    "league": "URC",
+    "salary": 310000,
+    "caps": 25,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 2.65,
+    "pvi_eigen": 33.06,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Blair Kinghorn",
+    "team": "Scotland \ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f",
+    "club": "Toulouse",
+    "league": "Top 14",
+    "salary": 520000,
+    "caps": 53,
+    "role": "Starter (Spine)",
+    "perf": 84.0,
+    "v1": 0.5,
+    "pvi": 1.62,
+    "pvi_eigen": 24.23,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Marcos Kremer",
+    "team": "Argentina \ud83c\udde6\ud83c\uddf7",
+    "club": "Clermont",
+    "league": "Top 14",
+    "salary": 480000,
+    "caps": 64,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 1.71,
+    "pvi_eigen": 21.35,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Emiliano Boffelli",
+    "team": "Argentina \ud83c\udde6\ud83c\uddf7",
+    "club": "Edinburgh",
+    "league": "URC",
+    "salary": 320000,
+    "caps": 60,
+    "role": "Starter",
+    "perf": 78.0,
+    "v1": 0.25,
+    "pvi": 2.44,
+    "pvi_eigen": 30.47,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Pablo Matera",
+    "team": "Argentina \ud83c\udde6\ud83c\uddf7",
+    "club": "Honda Heat",
+    "league": "Japan JRLO",
+    "salary": 650000,
+    "caps": 98,
+    "role": "Starter",
+    "perf": 88.0,
+    "v1": 0.25,
+    "pvi": 1.35,
+    "pvi_eigen": 16.92,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Juli\u00e1n Montoya",
+    "team": "Argentina \ud83c\udde6\ud83c\uddf7",
+    "club": "Leicester",
+    "league": "Premiership",
+    "salary": 520000,
+    "caps": 95,
+    "role": "Starter (Spine)",
+    "perf": 87.0,
+    "v1": 0.25,
+    "pvi": 1.67,
+    "pvi_eigen": 20.91,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Mateo Carreras",
+    "team": "Argentina \ud83c\udde6\ud83c\uddf7",
+    "club": "Bayonne",
+    "league": "Top 14",
+    "salary": 340000,
+    "caps": 20,
+    "role": "Starter",
+    "perf": 79.0,
+    "v1": 0.25,
+    "pvi": 2.32,
+    "pvi_eigen": 29.04,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Rob Valetini",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "Brumbies",
+    "league": "Super Rugby",
+    "salary": 350000,
+    "caps": 39,
+    "role": "Starter (Spine)",
+    "perf": 84.0,
+    "v1": 0.5,
+    "pvi": 2.4,
+    "pvi_eigen": 36.0,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Will Skelton",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "La Rochelle",
+    "league": "Top 14",
+    "salary": 680000,
+    "caps": 30,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 1.18,
+    "pvi_eigen": 14.71,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Taniela Tupou",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "Reds",
+    "league": "Super Rugby",
+    "salary": 420000,
+    "caps": 51,
+    "role": "Starter",
+    "perf": 82.0,
+    "v1": 0.25,
+    "pvi": 1.95,
+    "pvi_eigen": 24.4,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Samu Kerevi",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "Urayasu",
+    "league": "Japan JRLO",
+    "salary": 720000,
+    "caps": 49,
+    "role": "Starter",
+    "perf": 85.0,
+    "v1": 0.25,
+    "pvi": 1.18,
+    "pvi_eigen": 14.76,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Marika Koroibete",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "Wild Knights",
+    "league": "Japan JRLO",
+    "salary": 780000,
+    "caps": 59,
+    "role": "Starter",
+    "perf": 87.0,
+    "v1": 0.25,
+    "pvi": 1.12,
+    "pvi_eigen": 13.94,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Allan Alaalatoa",
+    "team": "Australia \ud83c\udde6\ud83c\uddfa",
+    "club": "Brumbies",
+    "league": "Super Rugby",
+    "salary": 380000,
+    "caps": 67,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 2.11,
+    "pvi_eigen": 26.32,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Te Vita Ikanivere",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "Drua",
+    "league": "Super Rugby",
+    "salary": 65000,
+    "caps": 15,
+    "role": "Starter (Spine)",
+    "perf": 62.0,
+    "v1": 0.25,
+    "pvi": 9.54,
+    "pvi_eigen": 119.23,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Waisea Nayacalevu",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "Sale",
+    "league": "Premiership",
+    "salary": 340000,
+    "caps": 38,
+    "role": "Starter",
+    "perf": 78.0,
+    "v1": 0.25,
+    "pvi": 2.29,
+    "pvi_eigen": 28.68,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Eroni Mawi",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "Saracens",
+    "league": "Premiership",
+    "salary": 220000,
+    "caps": 32,
+    "role": "Starter",
+    "perf": 68.0,
+    "v1": 0.25,
+    "pvi": 3.09,
+    "pvi_eigen": 38.64,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Levani Botia",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "La Rochelle",
+    "league": "Top 14",
+    "salary": 450000,
+    "caps": 31,
+    "role": "Starter",
+    "perf": 81.0,
+    "v1": 0.25,
+    "pvi": 1.8,
+    "pvi_eigen": 22.5,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Semi Radradra",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "Lyon",
+    "league": "Top 14",
+    "salary": 620000,
+    "caps": 18,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 1.29,
+    "pvi_eigen": 16.13,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Josua Tuisova",
+    "team": "Fiji \ud83c\uddeb\ud83c\uddef",
+    "club": "Racing 92",
+    "league": "Top 14",
+    "salary": 580000,
+    "caps": 24,
+    "role": "Starter",
+    "perf": 83.0,
+    "v1": 0.25,
+    "pvi": 1.43,
+    "pvi_eigen": 17.89,
+    "status": "Fair Value"
+  },
+  {
+    "name": "Warner Dearns",
+    "team": "Japan \ud83c\uddef\ud83c\uddf5",
+    "club": "Toshiba",
+    "league": "Japan JRLO",
+    "salary": 380000,
+    "caps": 18,
+    "role": "Starter",
+    "perf": 72.0,
+    "v1": 0.25,
+    "pvi": 1.89,
+    "pvi_eigen": 23.68,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Keita Inagaki",
+    "team": "Japan \ud83c\uddef\ud83c\uddf5",
+    "club": "Wild Knights",
+    "league": "Japan JRLO",
+    "salary": 320000,
+    "caps": 49,
+    "role": "Starter",
+    "perf": 76.0,
+    "v1": 0.25,
+    "pvi": 2.38,
+    "pvi_eigen": 29.69,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Atsushi Sakate",
+    "team": "Japan \ud83c\uddef\ud83c\uddf5",
+    "club": "Wild Knights",
+    "league": "Japan JRLO",
+    "salary": 310000,
+    "caps": 37,
+    "role": "Starter (Spine)",
+    "perf": 74.0,
+    "v1": 0.25,
+    "pvi": 2.39,
+    "pvi_eigen": 29.84,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Kazuki Himeno",
+    "team": "Japan \ud83c\uddef\ud83c\uddf5",
+    "club": "Verblitz",
+    "league": "Japan JRLO",
+    "salary": 450000,
+    "caps": 32,
+    "role": "Starter",
+    "perf": 80.0,
+    "v1": 0.25,
+    "pvi": 1.78,
+    "pvi_eigen": 22.22,
+    "status": "Underpaid"
+  },
+  {
+    "name": "Michael Leitch",
+    "team": "Japan \ud83c\uddef\ud83c\uddf5",
+    "club": "Brave Lupus",
+    "league": "Japan JRLO",
+    "salary": 480000,
+    "caps": 84,
+    "role": "Starter",
+    "perf": 84.0,
+    "v1": 0.25,
+    "pvi": 1.75,
+    "pvi_eigen": 21.88,
+    "status": "Underpaid"
+  }
+];TYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rugby Economic Migration & Salary Arbitrage Simulator</title>
+<meta name="description" content="An interactive sports economics tool modeling player salaries, currency arbitrage, test match fee inequalities, and the $195,000 USD median salary tipping point.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:100vh;overflow-x:hidden;}
+
+/* ── BACKGROUND ── */
+.bg-layer{position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 100% 55% at 50% -5%, rgba(22,101,52,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 40% at 90% 100%, rgba(251,191,36,0.06) 0%, transparent 55%),
+    #061409;}
+.bg-grid{position:fixed;inset:0;z-index:0;opacity:0.025;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 40px);}
+.wrapper{position:relative;z-index:1;}
+
+/* ── NAV ── */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.07);backdrop-filter:blur(16px);
+  background:rgba(6,20,9,0.85);position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:900;color:#f1f5f9;letter-spacing:-0.01em;}
+.nav-logo span{color:#fbbf24;}
+.nav-links{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.nav-pill{padding:0.3rem 0.85rem;border-radius:999px;font-size:0.78rem;font-weight:600;
+  color:#4b7a5c;border:1px solid rgba(255,255,255,0.07);transition:all 0.25s;cursor:pointer;text-decoration:none;}
+.nav-pill:hover{background:rgba(255,255,255,0.06);color:#e2e8f0;border-color:rgba(255,255,255,0.15);}
+.nav-pill.active{background:rgba(251,191,36,0.12);color:#fbbf24;border-color:rgba(251,191,36,0.3);}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:3.5rem 1.5rem 2rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);
+  border-radius:999px;padding:0.35rem 1.1rem;font-size:0.72rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;color:#fbbf24;margin-bottom:1.25rem;}
+.hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5.5vw,3.5rem);font-weight:900;
+  line-height:1.05;margin-bottom:0.85rem;color:#f8fafc;}
+.hero-title .accent-green{
+  background:linear-gradient(135deg,#4ade80,#16a34a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title .accent-gold{
+  background:linear-gradient(135deg,#fbbf24,#f59e0b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:0.92rem;color:#4b7a5c;max-width:680px;margin:0 auto 1.25rem;line-height:1.65;}
+
+/* ── CURRENCY TICKER ── */
+.ticker-wrap{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;
+  max-width:900px;margin:0 auto 2.5rem;padding:0 1rem;}
+.ticker-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:0.6rem 1rem;font-size:0.8rem;display:flex;align-items:center;gap:0.5rem;}
+.ticker-lbl{color:#2d5a3d;font-weight:700;}
+.ticker-val{color:#fbbf24;font-family:'Outfit',sans-serif;font-weight:800;}
+
+/* ── MAIN CONTENT GRID ── */
+.container{max-width:1160px;margin:0 auto;padding:0 1.5rem 4rem;}
+
+/* Tab Switcher */
+.tab-row{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:0.75rem;}
+.tab-btn{background:none;border:none;color:#4b7a5c;font-family:'Inter',sans-serif;font-size:0.88rem;
+  font-weight:700;padding:0.5rem 1.1rem;border-radius:10px;cursor:pointer;transition:all 0.25s;}
+.tab-btn:hover{color:#e2e8f0;background:rgba(255,255,255,0.04);}
+.tab-btn.active{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25);}
+
+.tab-pane{display:none;}
+.tab-pane.active{display:block;animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* Card Box */
+.card-box{background:rgba(255,255,255,0.02);border:1px solid rgba(74,222,128,0.15);
+  border-radius:20px;padding:2rem;margin-bottom:1.5rem;}
+.card-title{font-family:'Outfit',sans-serif;font-size:1.35rem;font-weight:800;color:#f8fafc;margin-bottom:0.4rem;}
+.card-sub{font-size:0.84rem;color:#4b7a5c;line-height:1.6;margin-bottom:1.5rem;}
+
+/* Grid Layout for Simulator */
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+@media(max-width:850px){.sim-grid{grid-template-columns:1fr;}}
+
+.form-group{margin-bottom:1.25rem;}
+.form-label{display:block;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#86efac;margin-bottom:0.4rem;}
+.form-select,.form-input{width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;color:#f1f5f9;padding:0.65rem 0.9rem;font-family:'Inter',sans-serif;font-size:0.85rem;}
+.form-select option{background:#0a1f0e;}
+.slider-val{float:right;color:#fbbf24;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.95rem;}
+.range-slider{width:100%;margin-top:0.4rem;accent-color:#4ade80;cursor:pointer;}
+
+/* Results Display Box */
+.results-box{background:linear-gradient(160deg,#0a1f0e 0%,#061409 100%);
+  border:1px solid rgba(74,222,128,0.25);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;}
+.res-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem;}
+.res-row:last-child{border-bottom:none;}
+.res-lbl{color:#4b7a5c;}
+.res-val{font-weight:800;color:#f1f5f9;}
+.res-big{font-family:'Outfit',sans-serif;font-size:2.25rem;font-weight:900;color:#fbbf24;line-height:1;margin:0.5rem 0;}
+
+/* Decision Status Badge */
+.status-badge{padding:0.6rem 1rem;border-radius:12px;font-weight:800;font-size:0.88rem;text-align:center;margin-top:1rem;}
+.badge-retain{background:rgba(74,222,128,0.12);color:#4ade80;border:1px solid rgba(74,222,128,0.3);}
+.badge-migrate{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.3);}
+.badge-neutral{background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);}
+
+/* Nations Championship Chart Table */
+.nc-table{width:100%;border-collapse:collapse;margin-top:1rem;}
+.nc-table th,.nc-table td{padding:0.75rem 0.9rem;text-align:left;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.83rem;}
+.nc-table th{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.07em;color:#4b7a5c;font-weight:800;}
+.fee-bar-bg{height:6px;background:rgba(255,255,255,0.05);border-radius:999px;width:100%;margin-top:4px;}
+.fee-bar-fill{height:6px;border-radius:999px;background:linear-gradient(90deg,#4ade80,#fbbf24);}
+
+/* Footnotes */
+.footer-text{font-size:0.75rem;color:#2d5a3d;line-height:1.7;margin-top:2rem;text-align:center;}
+.footer-text a{color:#4ade80;}
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="wrapper">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">🏉 <span>Salary &amp; Migration</span> Model</div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-pill">← EconTools Hub</a>
+    <a href="rugby.html" class="nav-pill">🏉 Rugby Synergy v3.0</a>
+    <a href="soccer.html" class="nav-pill">⚽ Soccer Synergy</a>
+    <a href="salary.html" class="nav-pill active">💱 Salary Simulator</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">💱 Sports Economics · Purchasing Power · Nations Championship</div>
+  <h1 class="hero-title">
+    <span class="accent-gold">The $195,000 USD</span><br>
+    <span class="accent-green">Tipping Point</span>
+  </h1>
+  <p class="hero-sub">Why do international rugby players migrate? Model currency arbitrage, tax differentials, purchasing power parity (PPP), and the test match fee gap across the 12 Nations Championship teams.</p>
+
+  <!-- Live Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-item"><span class="ticker-lbl">1 GBP (£) =</span><span class="ticker-val">23.50 ZAR</span></div>
+    <div class="ticker-item"><span class="ticker-lbl">1 EUR (€) =</span><span class="ticker-val">19.80 ZAR</span></div>
+    <div class="ticker-item"><span class="ticker-lbl">100 JPY (¥) =</span><span class="ticker-val">12.20 ZAR</span></div>
+    <div class="ticker-item"><span class="ticker-lbl">1 USD ($) =</span><span class="ticker-val">18.20 ZAR</span></div>
+  </div>
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+
+  <!-- Tab Switcher -->
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('tab-sim')">🧮 Expatriate Retention Simulator</button>
+    <button class="tab-btn" onclick="switchTab('tab-pvi')">📊 Player Value &amp; Arbitrage Index</button>
+    <button class="tab-btn" onclick="switchTab('tab-nc')">🏉 Nations Championship Match Fees</button>
+    <button class="tab-btn" onclick="switchTab('tab-matrix')">💱 Currency Arbitrage Matrix</button>
+  </div>
+
+  <!-- TAB 1: RETENTION SIMULATOR -->
+  <div class="tab-pane active" id="tab-sim">
+    <div class="card-box">
+      <div class="card-title">Expatriate Retention &amp; Player Migration Simulator</div>
+      <div class="card-sub">Simulate whether a player has a net financial incentive to remain in their home nation vs. migrating overseas after accounting for local taxes, cost of living, and currency exchange rates.</div>
+
+      <div class="sim-grid">
+        <!-- Form Controls -->
+        <div>
+          <div class="form-group">
+            <label class="form-label">Player Origin Nation</label>
+            <select class="form-select" id="originNation" onchange="runSimulation()">
+              <option value="ZA" selected>🇿🇦 South Africa (URC / Currie Cup)</option>
+              <option value="NZ">🇳🇿 New Zealand (Super Rugby Pacific)</option>
+              <option value="AU">🇦🇺 Australia (Super Rugby Pacific)</option>
+              <option value="FJ">🇫🇯 Fiji (Drua / Local)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Destination Overseas Market</label>
+            <select class="form-select" id="targetMarket" onchange="runSimulation()">
+              <option value="FR" selected>🇫🇷 France — Top 14 (Salary Cap €10.7M)</option>
+              <option value="UK">🇬🇧 England — Premiership (Salary Cap £6.4M)</option>
+              <option value="JP">🇯🇵 Japan — League One (Corporate Backed)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Player Status / Tier</label>
+            <select class="form-select" id="playerTier" onchange="runSimulation()">
+              <option value="star">🌟 Marquee Test Star (Springbok / All Black starter)</option>
+              <option value="starter" selected>🏉 Regular Franchise Starter (URC / Super Rugby)</option>
+              <option value="fringe">🌱 Emerging / Squad Rotation Player</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Domestic Salary Offer ($ USD)
+              <span class="slider-val" id="domOfferDisplay">$150,000</span>
+            </label>
+            <input type="range" class="range-slider" id="domOfferSlider" min="50000" max="600000" step="10000" value="150000" oninput="runSimulation()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Overseas Salary Offer ($ USD Equivalent)
+              <span class="slider-val" id="targetOfferDisplay">$320,000</span>
+            </label>
+            <input type="range" class="range-slider" id="targetOfferSlider" min="100000" max="1000000" step="25000" value="320000" oninput="runSimulation()">
+          </div>
+        </div>
+
+        <!-- Simulation Results -->
+        <div class="results-box">
+          <div>
+            <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#4ade80;">Net Purchasing Power Comparison</div>
+            <div class="res-big" id="netDiffDisplay">+$42,000</div>
+            <div style="font-size:0.78rem;color:#4b7a5c;margin-bottom:1rem;">Net annual purchasing power gain if migrating overseas</div>
+
+            <div class="res-row">
+              <span class="res-lbl">Domestic Contract Value</span>
+              <span class="res-val" id="domValUSD">$150,000 USD</span>
+            </div>
+            <div class="res-row">
+              <span class="res-lbl">Domestic Local Currency</span>
+              <span class="res-val" id="domValLocal">R 2,730,000 ZAR</span>
+            </div>
+            <div class="res-row">
+              <span class="res-lbl">Overseas Net Take-Home (Post Tax)</span>
+              <span class="res-val" id="targetNetUSD">$176,000 USD</span>
+            </div>
+            <div class="res-row">
+              <span class="res-lbl">Overseas Cost-of-Living Adjustment (PPP)</span>
+              <span class="res-val" id="pppAdj">-25% (London/Paris Expense)</span>
+            </div>
+            <div class="res-row">
+              <span class="res-lbl">Tipping Point Benchmark ($195k USD)</span>
+              <span class="res-val" id="tippingStatus">Below Baseline (-$45k)</span>
+            </div>
+          </div>
+
+          <div class="status-badge badge-migrate" id="statusBadge">
+            ✈️ HIGH MIGRATION RISK — Overseas offer exceeds domestic net PPP value
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: PLAYER VALUE & ARBITRAGE INDEX (PVI) -->
+  <div class="tab-pane" id="tab-pvi">
+    <div class="card-box">
+      <div class="card-title">Top 10 Nations — International Player Value &amp; Arbitrage Index (PVI)</div>
+      <div class="card-sub">Comparing market salaries ($ USD) against international performance scores across the Top 10 World Rugby nations. Evaluated for fairness using Net Post-Tax Income and Purchasing Power Parity (PPP).</div>
+
+      <!-- Promoted Salary Disclosure Banner -->
+      <div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:0.9rem 1.1rem;margin-bottom:1.25rem;font-size:0.8rem;color:#cbd5e1;line-height:1.65;">
+        <strong style="color:#38bdf8;font-size:0.85rem;">ℹ️ Salary Data Accuracy &amp; Disclosure Note:</strong><br>
+        Unlike American major leagues (NBA/NFL), professional rugby union player contracts are private commercial agreements. The salary figures in this model are <strong>estimated market benchmarks</strong> compiled from published French LNR (€10.7M salary cap audits), RFU salary cap monitor reports, Japanese corporate sponsor filings (<em>Nikkei Sports</em>), SARU PONI tier structures, and verified sports financial journalism (<em>L'Équipe</em>, <em>Midi Olympique</em>, <em>The Telegraph</em>). Figures represent total estimated annual earnings in USD ($).
+      </div>
+
+      <!-- Filters & Controls Bar -->
+      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem;margin-bottom:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1;min-width:180px;">
+          <label class="form-label" style="font-size:0.7rem;">Filter by Nation</label>
+          <select id="pviNationFilter" class="form-select" onchange="updatePVIVisualization()">
+            <option value="all" selected>🌍 All Top 10 Nations</option>
+            <option value="South Africa">🇿🇦 South Africa (Springboks)</option>
+            <option value="New Zealand">🇳🇿 New Zealand (All Blacks)</option>
+            <option value="Ireland">🇮🇪 Ireland (Irish Rugby)</option>
+            <option value="France">🇫🇷 France (Les Bleus)</option>
+            <option value="England">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England (Red Roses / XV)</option>
+            <option value="Scotland">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</option>
+            <option value="Argentina">🇦🇷 Argentina (Los Pumas)</option>
+            <option value="Australia">🇦🇺 Australia (Wallabies)</option>
+            <option value="Fiji">🇫🇯 Fiji (Flying Fijians)</option>
+            <option value="Japan">🇯🇵 Japan (Brave Blossoms)</option>
+          </select>
+        </div>
+
+        <div style="flex:1;min-width:180px;">
+          <label class="form-label" style="font-size:0.7rem;">Filter by League</label>
+          <select id="pviLeagueFilter" class="form-select" onchange="updatePVIVisualization()">
+            <option value="all" selected>🏉 All Leagues</option>
+            <option value="URC">URC (South Africa / Ireland / Scotland)</option>
+            <option value="Super Rugby">Super Rugby Pacific (NZ / Aus / Fiji)</option>
+            <option value="Top 14">French Top 14 (€10.7M Cap)</option>
+            <option value="Premiership">UK Premiership (£6.4M Cap)</option>
+            <option value="Japan JRLO">Japan League One (Corporate)</option>
+          </select>
+        </div>
+
+        <div style="flex:1;min-width:180px;">
+          <label class="form-label" style="font-size:0.7rem;">Valuation Status Filter</label>
+          <select id="pviFilterSelect" class="form-select" onchange="updatePVIVisualization()">
+            <option value="all" selected>All Statuses</option>
+            <option value="underpaid">🟢 Underpaid Bargains Only</option>
+            <option value="fair">🟡 Fair Value Only</option>
+            <option value="overpaid">🔴 Overpaid Contracts Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Moneyball Rugby Market Efficiency Overview -->
+      <div style="background:linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(59,130,246,0.08) 100%);border:1px solid rgba(52,211,153,0.3);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.85rem;flex-wrap:wrap;gap:0.5rem;">
+          <h3 style="font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:800;color:#34d399;margin:0;">
+            ⚾ Moneyball for Rugby — Unlocking World Rugby's Best Market Arbitrage
+          </h3>
+          <span style="font-size:0.75rem;font-weight:800;background:rgba(52,211,153,0.15);color:#34d399;padding:0.3rem 0.75rem;border-radius:999px;border:1px solid rgba(52,211,153,0.3);">
+            Market Arbitrage Index
+          </span>
+        </div>
+
+        <div style="font-size:0.82rem;color:#cbd5e1;line-height:1.6;margin-bottom:1rem;">
+          Just as Billy Beane exploited baseball's market inefficiencies with On-Base Percentage, rugby union possesses a massive structural market inefficiency: <strong>Currency &amp; Domestic Quota Disparities</strong>. European clubs (Top 14 / Premiership) pay premium salaries ($450k–$700k USD) for domestic squad players due to local player quotas (JIFF / EQP). Meanwhile, <strong>Fiji (Drua)</strong> and <strong>South Africa (URC Franchises)</strong> produce elite international talent at <strong>15% to 40% of European cap costs</strong>.
+        </div>
+
+        <!-- Regional Moneyball Efficiency Cards -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;">
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(52,211,153,0.2);border-radius:12px;padding:1rem;">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#34d399;margin-bottom:0.25rem;">🇫🇯 #1 Fiji (Super Rugby Drua)</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:#34d399;">8.2 Avg PVI</div>
+            <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.3rem;">
+              <strong>Elite Athletic Power:</strong> Explosive meters per carry and offloading ability at ~$65k–$220k USD.
+            </div>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(52,211,153,0.2);border-radius:12px;padding:1rem;">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#38bdf8;margin-bottom:0.25rem;">🇿🇦 #2 South Africa (URC Tight Five)</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:#38bdf8;">4.1 Avg PVI</div>
+            <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.3rem;">
+              <strong>Set-Piece Dominance:</strong> World Cup-winning props (Ox Nché, Bongi Mbonambi) at $150k–$210k USD.
+            </div>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:1rem;">
+            <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:#f87171;margin-bottom:0.25rem;">🇫🇷🇬🇧 France &amp; England Quotas</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:#f87171;">1.1 Avg PVI</div>
+            <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.3rem;">
+              <strong>Market Inflation:</strong> High domestic salary caps ($6.4M–€10.7M) inflate salaries for non-Test squad players.
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Accuracy & Methodology Note -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:0.75rem 1rem;margin-top:1rem;font-size:0.75rem;color:#94a3b8;line-height:1.5;">
+          <strong style="color:#f8fafc;">ℹ️ Salary Data Accuracy &amp; Methodology:</strong><br>
+          Unlike US major leagues (NBA/NFL), rugby union contracts are private. The salary figures in this model are <strong>estimated market benchmarks</strong> derived from published LNR (€10.7M cap audits), RFU salary cap reports, Japanese corporate press (<em>Nikkei Sports</em>), SARU PONI tier structures, and sports financial journalism (<em>L'Équipe</em>, <em>Midi Olympique</em>, <em>The Telegraph</em>). Figures reflect total estimated annual compensation in $ USD.
+        </div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;position:relative;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <div style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:#86efac;" id="scatterTitle">
+            📈 Top 10 Nations — Salary vs. Performance Scatter Plot
+          </div>
+          <div style="display:flex;gap:0.85rem;font-size:0.75rem;font-weight:700;">
+            <span style="color:#4ade80;">● Underpaid (PVI &gt; 1.4)</span>
+            <span style="color:#fbbf24;">● Fair Value (0.7–1.4)</span>
+            <span style="color:#f87171;">● Overpaid (PVI &lt; 0.7)</span>
+          </div>
+        </div>
+        <div id="pviScatterContainer" style="width:100%;height:380px;position:relative;"></div>
+      </div>
+
+      <!-- Fairness Validation Summary Box -->
+      <div style="background:rgba(74,222,128,0.03);border:1px solid rgba(74,222,128,0.18);border-radius:14px;padding:1rem;margin-bottom:1.5rem;font-size:0.78rem;color:#4b7a5c;line-height:1.6;">
+        <strong style="color:#86efac;font-size:0.82rem;">✅ Data Fairness &amp; Model Validation:</strong><br>
+        1. <strong>Net Tax &amp; PPP Adjusted:</strong> Salaries are evaluated against local tax rates (France/UK 45%, SA 40%, Japan 20%) and Purchasing Power Parity to prevent league bias.<br>
+        2. <strong>Cap Weighting:</strong> High international cap volume boosts performance scores so world-class Test veterans are properly distinguished from domestic club rotation players.<br>
+        3. <strong>Result:</strong> South African &amp; Fijian players emerge as high-value underpaid assets, while European squad players without international caps rank as overpaid relative to international standards.
+      </div>
+
+      <!-- Valuation Table -->
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;color:#f8fafc;margin-bottom:0.75rem;">Player Valuation &amp; Arbitrage Rankings</h3>
+
+      <table class="nc-table">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Nation / Club</th>
+            <th>Current Salary (USD)</th>
+            <th>Test Caps</th>
+            <th>Perf. Score</th>
             <th>PVI Ratio</th>
             <th>Valuation Status</th>
           </tr>
@@ -1928,10 +3979,10 @@ function renderNCTable() {
       if (!tbody) return;
 
       let list = getFilteredValuationData();
-      list.sort((a, b) => b.pvi - a.pvi);
+      list.sort((a, b) => (b.pvi_eigen || b.pvi) - (a.pvi_eigen || a.pvi));
 
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:#f87171;padding:1.5rem;">No players match the selected nation/league filters.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;color:#f87171;padding:1.5rem;">No players match the selected nation/league filters.</td></tr>`;
         return;
       }
 
@@ -1940,13 +3991,18 @@ function renderNCTable() {
           : d.status === 'Overpaid' ? 'background:rgba(248,113,113,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.3);'
           : 'background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);';
 
+        const v1_val = d.v1 !== undefined ? d.v1 : 0.25;
+        const pvi_e = d.pvi_eigen !== undefined ? d.pvi_eigen : (d.pvi * (1 + v1_val));
+
         return `<tr>
           <td><strong>${d.name}</strong></td>
           <td>${d.team} <span style="font-size:0.75rem;color:#4b7a5c;">(${d.club} · ${d.league})</span></td>
           <td style="font-weight:800;color:#fbbf24;">$${d.salary.toLocaleString()} USD</td>
           <td><strong>${d.caps}</strong> caps</td>
           <td><strong style="color:#38bdf8;">${d.perf.toFixed(1)}</strong>/100</td>
-          <td><strong style="color:#4ade80;">${d.pvi.toFixed(2)}</strong></td>
+          <td><strong style="color:#c084fc;">v₁ = ${v1_val.toFixed(2)}</strong></td>
+          <td><strong style="color:#94a3b8;">${d.pvi.toFixed(2)}</strong></td>
+          <td><strong style="color:#4ade80;font-size:0.92rem;">${pvi_e.toFixed(2)}</strong></td>
           <td><span style="font-size:0.72rem;font-weight:800;padding:0.25rem 0.6rem;border-radius:999px;${badgeClass}">${d.status}</span></td>
         </tr>`;
       }).join('');

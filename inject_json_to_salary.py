@@ -14,7 +14,9 @@ with open("C:/Users/simon/.gemini/antigravity/scratch/personal-qualities-audit/r
             "caps": int(row["caps"]),
             "role": row["role"],
             "perf": float(row["perf_score"]),
+            "v1": float(row["v1_eigen"]),
             "pvi": float(row["pvi"]),
+            "pvi_eigen": float(row["pvi_eigen"]),
             "status": row["status"]
         })
 
