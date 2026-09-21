@@ -130,7 +130,7 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     2.0, 2.0, 2.0, 7.0
   ),
   combination_status = c(
-    "Freedom Cup & World Cup Champion Core","Robertson Cycle Rebuild (Freedom Cup Runner-up)","Settled 6-Nations Champion Core","Settled Grand Slam Core","Rebuilt Post-2023 Unit",
+    "The Greatest Rivalry Series & World Cup Champions","Robertson Cycle Rebuild (Greatest Rivalry Runner-up)","Settled 6-Nations Champion Core","Settled Grand Slam Core","Rebuilt Post-2023 Unit",
     "Long-standing Core","Post-Cheika Transition","Schmidt Rebuilding Phase","Pacific Hybrid Combination","Eddie Jones Young Squad","Gatland Major Rebuild",
     "Quesada Evolving Unit","Set-Piece Heavy Core","MLR Hybrid Unit","European Professional Core","Super Rugby Americas Core","División de Honor Core",
     "Domestic Core Unit","Pacific Veteran Core","Eastern European Pack Unit","MLR Native Squad"
