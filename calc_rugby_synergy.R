@@ -118,25 +118,25 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     30, 35, 38, 24
   ),
   coach_name = c(
-    "Rassie Erasmus","Dave Rennie","Andy Farrell","Fabien Galthié","Steve Borthwick",
+    "Rassie Erasmus","Scott Robertson","Andy Farrell","Fabien Galthié","Steve Borthwick",
     "Gregor Townsend","Felipe Contepomi","Joe Schmidt","Mick Byrne","Eddie Jones","Steve Tandy",
     "Gonzalo Quesada","Richard Cockerill","Scott Lawrence","Simon Mannix","Pablo Lemoine","Pablo Bouza",
     "Rodolfo Ambrosio","Tevita Tu'ifua","David Gérard","Kingsley Jones"
   ),
   coach_tenure_yrs = c(
-    8.0, 0.5, 6.0, 6.0, 3.5,
+    8.0, 1.5, 6.0, 6.0, 3.5,
     9.0, 2.0, 2.5, 2.0, 3.0, 1.0,
     2.5, 2.5, 2.5, 2.0, 6.0, 2.0,
     2.0, 2.0, 2.0, 7.0
   ),
   combination_status = c(
-    "World Cup Champion Core (3+ yrs)","New World Cup Cycle Rebuild","Settled 6-Nations Champion Core","Settled Grand Slam Core","Rebuilt Post-2023 Unit",
+    "Freedom Cup & World Cup Champion Core","Robertson Cycle Rebuild (Freedom Cup Runner-up)","Settled 6-Nations Champion Core","Settled Grand Slam Core","Rebuilt Post-2023 Unit",
     "Long-standing Core","Post-Cheika Transition","Schmidt Rebuilding Phase","Pacific Hybrid Combination","Eddie Jones Young Squad","Gatland Major Rebuild",
     "Quesada Evolving Unit","Set-Piece Heavy Core","MLR Hybrid Unit","European Professional Core","Super Rugby Americas Core","División de Honor Core",
     "Domestic Core Unit","Pacific Veteran Core","Eastern European Pack Unit","MLR Native Squad"
   ),
   style_category = c(
-    "Set Piece & Bomb Squad","Running & Width","Set Piece & Lineout Drive","Expansive & Unpredictable","Kicking & Field Position",
+    "Set Piece & Tony Brown Attack","Running & Width","Set Piece & Lineout Drive","Expansive & Unpredictable","Kicking & Field Position",
     "Fast Attacking & Loose-Ball","Physicality & Breakdown","Kicking & Counter-Attack","Unstructured Running Rugby","High-Tempo & Passing",
     "Developing Direct Game","High-Tempo & Counter","Set Piece Warriors","Direct MLR Physicality","Fast & Offloading","URBA Direct Physicality",
     "Developing Identity","Physical Breakdown Game","Direct Pacific Power","Set Piece & Maul","Developing Identity"
@@ -148,7 +148,7 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     "🌱","💥","💥","🛡️","🌱"
   ),
   ts_score_raw = c(
-    9.5, 8.8, 9.6, 8.8, 7.2,
+    9.8, 8.8, 9.6, 8.8, 7.2,
     7.8, 8.2, 6.2, 8.0, 7.5, 5.8,
     6.8, 9.0, 5.5, 6.5, 6.0, 4.8,
     6.2, 6.5, 7.2, 4.5
@@ -160,7 +160,7 @@ squad_data_v3 <- data.frame(stringsAsFactors = FALSE,
     4.5, 5.2, 4.0, 3.8
   ),
   win_pct_top10 = c(
-    82, 72, 80, 75, 52,
+    85, 72, 80, 75, 52,
     55, 50, 42, 35, 30, 25,
     40, 20, 5, 15, 0, 5,
     10, 10, 5, 0
