@@ -343,8 +343,8 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
 
 <!-- CONTROLS -->
 <div class="controls">
-  <input type="text" class="ctrl-input" id="searchInput" placeholder="Search by nation…" oninput="renderTable()">
-  <select class="ctrl-select" id="profileFilter" onchange="renderTable()">
+  <input type="text" class="ctrl-input" id="searchInput" aria-label="Search by nation" placeholder="Search by nation…" oninput="renderTable()">
+  <select class="ctrl-select" id="profileFilter" aria-label="Filter by Chemistry Profile" onchange="renderTable()">
     <option value="">All Chemistry Profiles</option>
     <option value="Bomb Squad Depth">💣 Bomb Squad Depth</option>
     <option value="Franchise Fortress">🏰 Franchise Fortress</option>
@@ -352,7 +352,7 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
     <option value="Cap-Rich Veterans">🎖 Cap-Rich Veterans</option>
     <option value="Rising Challenger">🌱 Rising Challenger</option>
   </select>
-  <select class="ctrl-select" id="sortBy" onchange="renderTable()">
+  <select class="ctrl-select" id="sortBy" aria-label="Sort by" onchange="renderTable()">
     <option value="synergy">Synergy ↓</option>
     <option value="wr_rank">WR Rank ↑</option>
     <option value="win_pct_top10">Top 10 Win % ↓</option>
@@ -385,7 +385,7 @@ body{font-family:'Inter',sans-serif;background:#061409;color:#e2e8f0;min-height:
 <!-- DETAIL MODAL -->
 <div class="overlay hidden" id="detailOverlay">
   <div class="detail-box">
-    <button class="detail-close" onclick="closeDetail()">✕</button>
+    <button class="detail-close" aria-label="Close detail modal" onclick="closeDetail()">✕</button>
     <div id="detailContent"></div>
   </div>
 </div>
